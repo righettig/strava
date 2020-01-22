@@ -3,6 +3,8 @@ import { IActivity } from 'src/app/activities/models/activity';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { faRunning, faHiking, faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { ActivitiesApiService } from '../activities-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activity-details',
@@ -13,7 +15,10 @@ export class ActivityDetailsComponent implements OnInit {
 
   @Input() activity: IActivity;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(
+    private modalService: NgbModal,
+    private activitiesApi: ActivitiesApiService,
+    private router: Router) { }
 
   ngOnInit() {
     switch (this.activity.category) {
@@ -26,6 +31,12 @@ export class ActivityDetailsComponent implements OnInit {
   delete(activity: IActivity) {
     const modal = this.modalService.open(ConfirmDeleteActivityModal);
     modal.componentInstance.activity = activity;
+
+    modal.result.then(() => {
+      this.activitiesApi.deleteActivity(activity.id).subscribe(result => {
+        this.router.navigate(['activities']);
+      });
+    })
   }
 
 }

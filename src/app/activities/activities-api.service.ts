@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { IActivity } from './models/activity';
-import { catchError, tap, filter, timeout, map } from 'rxjs/operators';
+import { catchError, tap, filter, timeout, map, audit } from 'rxjs/operators';
 
 const localUrl = 'api/activities.json';
 const TIMEOUT = 5000;
@@ -14,8 +14,11 @@ export class ActivitiesApiService {
 
   constructor(private http: HttpClient) { }
 
+  activities: IActivity[]; // in-memory cache
+
   getActivities(): Observable<IActivity[]> {
     return this.http.get<IActivity[]>(localUrl).pipe(
+      tap(data => this.activities = data),
       tap(data => console.log("getActivities: " + JSON.stringify(data))),
       timeout(TIMEOUT),
       catchError(this.handleError)
@@ -27,12 +30,34 @@ export class ActivitiesApiService {
       return of(this.initializeActivity());
     }
 
-    return this.http.get<IActivity[]>(localUrl).pipe(
-      map(data => data.find(a => a.id == activityId)),
-      tap(data => console.log('getActivity: ' + JSON.stringify(data))),
-      timeout(TIMEOUT),
-      catchError(this.handleError)
-    )
+    if (this.activities) {
+      return of(this.activities.find(a => a.id == activityId));
+
+    } else {
+      return this.http.get<IActivity[]>(localUrl).pipe(
+        map(data => data.find(a => a.id == activityId)),
+        tap(data => console.log('getActivity: ' + JSON.stringify(data))),
+        timeout(TIMEOUT),
+        catchError(this.handleError)
+      )
+    }
+  }
+
+  deleteActivity(activityId: number): Observable<boolean> {
+    if (this.activities) {
+      const index = this.activities.findIndex(a => a.id == activityId);
+      
+      if (index > -1) {
+        this.activities.splice(index, 1);
+        return of(true);
+
+      } else {
+        return of(false);
+      }
+     
+    } else {
+      return of(false);
+    }
   }
 
   private handleError(err: HttpErrorResponse) {
