@@ -1,5 +1,5 @@
 <div ngbDropdown class="d-inline-block">
-  <button class="btn btn-outline-primary" id="filterByCategoryDropdownMenu" ngbDropdownToggle>Filter by</button>
+  <button class="btn btn-outline-primary" id="filterByCategoryDropdownMenu" ngbDropdownToggle>Filter by {{filterBy}}</button>
   <div ngbDropdownMenu aria-labelledby="filterByCategoryDropdownMenu">
     <button ngbDropdownItem (click)="doFilter('all')">All</button>
     <button ngbDropdownItem (click)="doFilter('run')">Running</button>
