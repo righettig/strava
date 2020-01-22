@@ -9,6 +9,11 @@
 </div>
 
 <div class="activity-list">
+  <p *ngIf="errorMessage">
+    <ngb-alert (close)="dismissError()">
+      <strong>Warning!</strong> An error occurred while retrieving activities data.
+    </ngb-alert>
+  </p>
   <ng-container *ngFor="let activity of filteredActivities">
     <app-activity-details [activity]="activity"></app-activity-details>
   </ng-container>

@@ -29,9 +29,12 @@ export class ActivityListComponent implements OnInit {
 
   getActivities() {
     this.activitiesApi.getActivities()
-      .subscribe(data => {
-        this.activities = data;
-        this.filterActivities();
+      .subscribe({
+        next: data => {
+          this.activities = data;
+          this.filterActivities();
+        },
+        error: err => this.errorMessage = err
       });
   }
 
@@ -49,6 +52,12 @@ export class ActivityListComponent implements OnInit {
         this.activities.filter(el => el.category === this.filterBy);
     }
   }
+
+  dismissError() {
+    this.errorMessage = "";
+  }
+
+  errorMessage: string = "foo";
 
   activities: IActivity[];
   filteredActivities: IActivity[];

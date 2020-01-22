@@ -2,19 +2,22 @@ routing
 	different "layout" based on loggedin state
 
 better http errorHandling
-
-DONE: byCategoryFilter
-byCreationDateRangeFilter
-
-throttle byCategoryFilter searches
-	need a string based criteria
+	timeout observable
 
 delete with confirmation dialog
-
 enter
 amend
 
 CanActivate (pluralsight)
+	i.e. check route params correctedness
+	
 CanLeave route guard to save pending changes
 
-update dependencies
+minor
+	byCreationDateRangeFilter
+
+optional
+	throttle byCategoryFilter searches
+		need a string based criteria
+
+	update dependencies
