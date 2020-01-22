@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faStrava } from '@fortawesome/free-brands-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,13 @@ import { faStrava } from '@fortawesome/free-brands-svg-icons';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.router.navigate(["activities"]);
   }
 
   faStrava = faStrava;
