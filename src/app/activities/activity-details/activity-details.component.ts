@@ -17,9 +17,9 @@ export class ActivityDetailsComponent implements OnInit {
 
   ngOnInit() {
     switch (this.activity.category) {
-      case "run":     this.activity.icon = faRunning; break;
-      case "cycling": this.activity.icon = faBicycle; break;
-      case "hiking":  this.activity.icon = faHiking;  break;
+      case "run":  this.activity.icon = faRunning; break;
+      case "ride": this.activity.icon = faBicycle; break;
+      case "hike": this.activity.icon = faHiking;  break;
     }
   }
 

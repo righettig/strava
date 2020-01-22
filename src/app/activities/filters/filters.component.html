@@ -1,9 +1,9 @@
 <div ngbDropdown class="d-inline-block">
   <button class="btn btn-outline-primary" id="filterByCategoryDropdownMenu" ngbDropdownToggle>Filter by</button>
   <div ngbDropdownMenu aria-labelledby="filterByCategoryDropdownMenu">
-    <button ngbDropdownItem>All</button>
-    <button ngbDropdownItem>Running</button>
-    <button ngbDropdownItem>Cycling</button>
-    <button ngbDropdownItem>Hiking</button>
+    <button ngbDropdownItem (click)="doFilter('all')">All</button>
+    <button ngbDropdownItem (click)="doFilter('run')">Running</button>
+    <button ngbDropdownItem (click)="doFilter('ride')">Cycling</button>
+    <button ngbDropdownItem (click)="doFilter('hike')">Hiking</button>
   </div>
 </div>

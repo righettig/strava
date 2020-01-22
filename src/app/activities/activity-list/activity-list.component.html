@@ -3,11 +3,13 @@
 </div> -->
 
 <div class="row">
-  <app-filters></app-filters>
+  <app-filters 
+    [filterBy]="initialFilter" 
+    (onFilter)="onFilter($event)"></app-filters>
 </div>
 
 <div class="activity-list">
-  <ng-container *ngFor="let activity of activities">
+  <ng-container *ngFor="let activity of filteredActivities">
     <app-activity-details [activity]="activity"></app-activity-details>
   </ng-container>
 </div>
