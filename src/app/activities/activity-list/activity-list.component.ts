@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IActivity } from 'src/app/models/activity';
+import { IActivity } from 'src/app/activities/models/activity';
 
 @Component({
   selector: 'app-activity-list',
