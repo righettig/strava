@@ -2,7 +2,10 @@
   <div class="card-header">
     {{activity.name}}
     <small>{{activity.creationDate}}</small>
-    <button (click)="edit(activity)">Edit</button>
+    <!-- <fa-icon [icon]="faRunning"></fa-icon> -->
+    <a [routerLink]="['/activities', activity.id]">
+      Edit
+    </a>
     <button (click)="delete(activity)">Delete</button>
   </div>
   <div class="card-body">
