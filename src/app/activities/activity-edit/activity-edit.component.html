@@ -1,20 +1,30 @@
-<form>
+<form *ngIf="activity">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" 
+      [(ngModel)]="activity.name">
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" placeholder="Description">
+    <input type="text" class="form-control" id="description" name="description" placeholder="Description"
+      [(ngModel)]="activity.description">
   </div>
   <div class="form-group">
     <label for="category">Category</label>
-    <input type="text" class="form-control" id="category" placeholder="Category">
+    <input type="text" class="form-control" id="category" name="category" placeholder="Category"
+      [(ngModel)]="activity.category">
   </div>
   <div class="form-group">
     <label for="subcategory">Subcategory</label>
-    <input type="text" class="form-control" id="subcategory" placeholder="Subcategory">
+    <input type="text" class="form-control" id="subcategory" name="subcategory" placeholder="Subcategory"
+      [(ngModel)]="activity.subcategory">
   </div>
+  <button class="btn btn-primary" type="submit" (click)="save()">
+    Save
+  </button>
+  <button class="btn btn-default" type="reset" (click)="discard()">
+    Discard
+  </button>
 </form>
 
 <a [routerLink]="['/activities']">Back</a>
