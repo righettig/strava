@@ -7,11 +7,9 @@ better http errorHandling
 delete with confirmation dialog
 enter
 amend
-
-CanActivate (pluralsight)
-	i.e. check route params correctedness
 	
-CanLeave route guard to save pending changes
+CanDeactivate route guard to save pending changes
+	requires dirty checks in place inside ActivityEdit Component
 
 minor
 	byCreationDateRangeFilter
