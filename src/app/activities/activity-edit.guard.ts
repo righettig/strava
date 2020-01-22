@@ -28,7 +28,12 @@ export class ActivityEditGuard implements CanActivate, CanDeactivate<ActivityEdi
     currentState: RouterStateSnapshot,
     nextState: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    if (component.pendingChanges) {
+      alert("there are pending changes.");
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }

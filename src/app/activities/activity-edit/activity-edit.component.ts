@@ -19,4 +19,8 @@ export class ActivityEditComponent implements OnInit {
     //this.activitiesApi.getActivityById(activityId);
   }
 
+  get pendingChanges() {
+    return false;
+  }
+
 }
