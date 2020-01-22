@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { IActivity } from './models/activity';
-import { catchError, tap, filter, timeout } from 'rxjs/operators'; 
+import { catchError, tap, filter, timeout, map } from 'rxjs/operators';
 
 const localUrl = 'api/activities.json';
 const TIMEOUT = 5000;
@@ -16,17 +16,24 @@ export class ActivitiesApiService {
 
   getActivities(): Observable<IActivity[]> {
     return this.http.get<IActivity[]>(localUrl).pipe(
-      tap(data => console.log("getProducts: " + JSON.stringify(data))),
+      tap(data => console.log("getActivities: " + JSON.stringify(data))),
       timeout(TIMEOUT),
       catchError(this.handleError)
     );
   }
 
-  // getActivityById(activityId: number): Observable<IActivity | null> {
-  //   // return this.http.get<IActivity[]>(localUrl).pipe(
-  //   //   filter(activities => null)
-  //   // )
-  // }
+  getActivity(activityId: number): Observable<IActivity> {
+    if (activityId === 0) {
+      return of(this.initializeActivity());
+    }
+
+    return this.http.get<IActivity[]>(localUrl).pipe(
+      map(data => data.find(a => a.id == activityId)),
+      tap(data => console.log('getActivity: ' + JSON.stringify(data))),
+      timeout(TIMEOUT),
+      catchError(this.handleError)
+    )
+  }
 
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
@@ -42,6 +49,19 @@ export class ActivitiesApiService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+
+  private initializeActivity(): IActivity {
+    // Return an initialized object
+    return {
+      id: 0,
+      name: '',
+      category: '',
+      description: '',
+      creationDate: '',
+      subcategory: '',
+      icon: null
+    };
   }
 
 }
