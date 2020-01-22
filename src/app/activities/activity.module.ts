@@ -9,12 +9,14 @@ import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActivityEditGuard } from './activity-edit.guard';
 
 const routes: Routes = [
   { path: "activities", component: ActivityListComponent },
   { 
     path: "activities/:id", 
-    //canActivate: [ActivityEditGuard],
+    canActivate: [ActivityEditGuard],
+    canDeactivate: [ActivityEditGuard],
     component: ActivityEditComponent 
   },
   //{ path: "dashboard", component: DashboardComponent },
