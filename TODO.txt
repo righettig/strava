@@ -1,4 +1,6 @@
 routing
+	auth routing
+	different "layout" based on loggedin state
 
 byCategoryFilter
 byCreationDateRangeFilter
