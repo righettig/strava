@@ -1,9 +1,6 @@
 routing
 	different "layout" based on loggedin state
 
-better http errorHandling
-	timeout observable
-
 delete with confirmation dialog
 enter
 amend

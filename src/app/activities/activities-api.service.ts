@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { IActivity } from './models/activity';
-import { catchError, tap, filter } from 'rxjs/operators'; 
+import { catchError, tap, filter, timeout } from 'rxjs/operators'; 
 
 const localUrl = 'api/activities.json';
+const TIMEOUT = 5000;
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ActivitiesApiService {
   getActivities(): Observable<IActivity[]> {
     return this.http.get<IActivity[]>(localUrl).pipe(
       tap(data => console.log("getProducts: " + JSON.stringify(data))),
+      timeout(TIMEOUT),
       catchError(this.handleError)
     );
   }
