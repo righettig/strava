@@ -1,6 +1,7 @@
 routing
-	auth routing
 	different "layout" based on loggedin state
+
+better http errorHandling
 
 byCategoryFilter
 byCreationDateRangeFilter
@@ -15,6 +16,7 @@ delete with confirmation dialog
 enter
 amend
 
+CanActivate (pluralsight)
 CanLeave route guard to save pending changes
 
 update dependencies

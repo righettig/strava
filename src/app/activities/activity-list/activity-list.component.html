@@ -1,7 +1,13 @@
-<app-user-stats></app-user-stats>
+<div class="row">
+  <app-user-stats></app-user-stats>
+</div>
 
-<app-filters></app-filters>
+<div class="row">
+  <app-filters></app-filters>
+</div>
 
-<ng-container *ngFor="let activity of activities">
-  <app-activity-details [activity]="activity"></app-activity-details>
-</ng-container>
+<div class="activity-list">
+  <ng-container *ngFor="let activity of activities">
+    <app-activity-details [activity]="activity"></app-activity-details>
+  </ng-container>
+</div>
