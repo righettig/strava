@@ -1,10 +1,6 @@
-<div class="card" *ngFor="let activity of activities">
- <div class="card-header">
-   {{activity.name}}
-   <small>{{activity.creationDate}}</small>
- </div>
- <div class="card-body">
-  {{activity.description}}
- </div>
- <hr>
-</div>
+<ng-container *ngFor="let activity of activities">
+
+  <app-activity-details [activity]="activity"></app-activity-details>
+
+</ng-container>
+

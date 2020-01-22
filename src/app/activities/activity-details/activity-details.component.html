@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    {{activity.name}}
+    <small>{{activity.creationDate}}</small>
+    <button (click)="edit(activity)">Edit</button>
+    <button (click)="delete(activity)">Delete</button>
+  </div>
+  <div class="card-body">
+    {{activity.description}}
+  </div>
+  <hr>
+</div>

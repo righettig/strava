@@ -7,6 +7,8 @@ import { ActivityListComponent } from './activities/activity-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserStatsComponent } from './user-stats/user-stats.component';
+import { ActivityDetailsComponent } from './activities/activity-details/activity-details.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { RegisterComponent } from './register/register.component';
     ActivityListComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserStatsComponent,
+    ActivityDetailsComponent
   ],
   imports: [
     BrowserModule,
