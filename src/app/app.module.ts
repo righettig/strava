@@ -12,6 +12,7 @@ import { UserStatsComponent } from './user-stats/user-stats.component';
 import { ActivityDetailsComponent } from './activities/activity-details/activity-details.component';
 import { ActivityEditComponent } from './activities/activity-edit/activity-edit.component';
 import { ActivityNewComponent } from './activities/activity-new/activity-new.component';
+import { FiltersComponent } from './activities/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ActivityNewComponent } from './activities/activity-new/activity-new.com
     UserStatsComponent,
     ActivityDetailsComponent,
     ActivityEditComponent,
-    ActivityNewComponent
+    ActivityNewComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
