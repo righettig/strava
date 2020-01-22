@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesApiService } from '../activities-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activity-edit',
@@ -9,11 +10,12 @@ import { ActivitiesApiService } from '../activities-api.service';
 export class ActivityEditComponent implements OnInit {
 
   constructor(
-    private activitiesApi: ActivitiesApiService) { }
+    private activitiesApi: ActivitiesApiService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     // retrieve activityId from route params
-    const activityId = 1;
+    const activityId = +this.route.snapshot.paramMap.get("id");
     //this.activitiesApi.getActivityById(activityId);
   }
 
