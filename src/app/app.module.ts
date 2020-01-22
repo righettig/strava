@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
 import { ActivityDetailsComponent } from './activities/activity-details/activity-details.component';
 import { ActivityEditComponent } from './activities/activity-edit/activity-edit.component';
+import { ActivityNewComponent } from './activities/activity-new/activity-new.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ActivityEditComponent } from './activities/activity-edit/activity-edit.
     RegisterComponent,
     UserStatsComponent,
     ActivityDetailsComponent,
-    ActivityEditComponent
+    ActivityEditComponent,
+    ActivityNewComponent
   ],
   imports: [
     BrowserModule,
