@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-header">
+    <fa-icon [icon]="activity.icon"></fa-icon>
     {{activity.name}}
     <small>{{activity.creationDate}}</small>
-    <!-- <fa-icon [icon]="faRunning"></fa-icon> -->
     <a [routerLink]="['/activities', activity.id]">
       Edit
     </a>
@@ -11,5 +11,4 @@
   <div class="card-body">
     {{activity.description}}
   </div>
-  <hr>
 </div>

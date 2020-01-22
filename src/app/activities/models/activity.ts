@@ -1,3 +1,5 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+
 export interface IActivity {
   id: number;
   name: string;
@@ -5,5 +7,5 @@ export interface IActivity {
   creationDate: string; // Date;
   category: string;
   subcategory: string;
-  icon: string;
+  icon: IconDefinition;
 }

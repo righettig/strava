@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IActivity } from 'src/app/activities/models/activity';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
+import { faRunning, faHiking, faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-activity-details',
@@ -15,6 +16,11 @@ export class ActivityDetailsComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+    switch (this.activity.category) {
+      case "run":     this.activity.icon = faRunning; break;
+      case "cycling": this.activity.icon = faBicycle; break;
+      case "hiking":  this.activity.icon = faHiking;  break;
+    }
   }
 
   delete(activity: IActivity) {

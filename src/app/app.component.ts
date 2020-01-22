@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { faRunning } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,4 @@ import { faRunning } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'strava';
-  faRunning = faRunning;
 }
