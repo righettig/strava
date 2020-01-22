@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IActivity } from 'src/app/activities/models/activity';
 import { ActivitiesApiService } from '../activities-api.service';
+import { ActivitiesParamsService } from '../activities-params.service';
 
 @Component({
   selector: 'app-activity-list',
@@ -9,30 +10,45 @@ import { ActivitiesApiService } from '../activities-api.service';
 })
 export class ActivityListComponent implements OnInit {
 
-  constructor(private activitiesApi: ActivitiesApiService) { }
+  constructor(
+    private activitiesApi: ActivitiesApiService,
+    private params: ActivitiesParamsService) { 
+  }
 
   ngOnInit() {
     this.getActivities();
+  }
+
+  set filterBy(value: string) {
+    this.params.filterBy = value;
+  }
+
+  get filterBy() {
+    return this.params.filterBy;
   }
 
   getActivities() {
     this.activitiesApi.getActivities()
       .subscribe(data => {
         this.activities = data;
-        this.filteredActivities = this.activities;
+        this.filterActivities();
       });
   }
 
   onFilter(type) {
-    if (type === "all") {
-      this.filteredActivities = this.activities;
-    } else {
-      this.filteredActivities = 
-        this.activities.filter(el => el.category === type);
-    }
+    this.filterBy = type;
+    this.filterActivities();
   }
 
-  initialFilter = "all"; // convert to enum
+  filterActivities() {
+    if (this.filterBy === "all") {
+      this.filteredActivities = this.activities;
+      
+    } else {
+      this.filteredActivities = 
+        this.activities.filter(el => el.category === this.filterBy);
+    }
+  }
 
   activities: IActivity[];
   filteredActivities: IActivity[];

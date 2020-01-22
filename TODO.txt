@@ -9,9 +9,6 @@ byCreationDateRangeFilter
 throttle byCategoryFilter searches
 	need a string based criteria
 
-it should be possible to retain filter params when navigating back and forth between 
-	list and edit view
-
 delete with confirmation dialog
 
 enter
