@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ActivityModule } from './activities/activity.module';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared/shared.module';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,13 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
-
     NgbModule,
 
     // only icons I have explicitly imported will end up in the bundle and the remaining ones will be tree-shaken away.
     FontAwesomeModule,
         
+    SharedModule,
     ActivityModule,
     AuthModule,
 

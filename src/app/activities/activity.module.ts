@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared/shared.module';
+
 import { FiltersComponent } from './filters/filters.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { ActivityEditComponent } from './activity-edit/activity-edit.component';
@@ -21,7 +22,7 @@ import { UserStatsComponent } from './activity-list/user-stats/user-stats.compon
     UserStatsComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class ActivityModule { }
