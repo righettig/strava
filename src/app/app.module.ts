@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
 import { ActivityDetailsComponent } from './activities/activity-details/activity-details.component';
+import { ActivityEditComponent } from './activities/activity-edit/activity-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ActivityDetailsComponent } from './activities/activity-details/activity
     LoginComponent,
     RegisterComponent,
     UserStatsComponent,
-    ActivityDetailsComponent
+    ActivityDetailsComponent,
+    ActivityEditComponent
   ],
   imports: [
     BrowserModule,
