@@ -1,0 +1,23 @@
+routing
+
+trends
+	analyticsmodule
+		analytics component
+
+byCategoryFilter
+byCreationDateRangeFilter
+
+throttle byCategoryFilter searches
+
+it should be possible to retain filter params when navigating back and forth between 
+	list and edit view
+
+delete with confirmation dialog
+	ngbootstrap?
+
+enter
+amend
+
+CanLeave route guard to save pending changes
+
+update dependencies
