@@ -22,4 +22,9 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  get currentUsername() {
+    return "testUser";
+    //return this.auth.currentUsername;
+  }
+
 }

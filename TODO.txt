@@ -1,5 +1,8 @@
 routing
 	different "layout" based on loggedin state
+		=> Angular Routing (Deborah Kurata) 4h:49m
+
+	PageNotFoundComponent when searching an activity that does not exist
 
 delete with confirmation dialog
 enter
