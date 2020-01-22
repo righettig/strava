@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IActivity } from 'src/app/activities/models/activity';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 
 @Component({
   selector: 'app-activity-details',
@@ -10,9 +12,14 @@ export class ActivityDetailsComponent implements OnInit {
 
   @Input() activity: IActivity;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  delete(activity: IActivity) {
+    const modal = this.modalService.open(ConfirmDeleteActivityModal);
+    modal.componentInstance.activity = activity;
   }
 
 }

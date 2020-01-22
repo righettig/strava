@@ -1,9 +1,5 @@
 routing
 
-trends
-	analyticsmodule
-		analytics component
-
 byCategoryFilter
 byCreationDateRangeFilter
 
@@ -13,7 +9,6 @@ it should be possible to retain filter params when navigating back and forth bet
 	list and edit view
 
 delete with confirmation dialog
-	ngbootstrap?
 
 enter
 amend

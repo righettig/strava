@@ -7,6 +7,7 @@ import { ActivityEditComponent } from './activity-edit/activity-edit.component';
 import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
+import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UserStatsComponent } from './activity-list/user-stats/user-stats.compon
     ActivityListComponent,
     ActivityNewComponent,
     UserStatsComponent,
-    FiltersComponent
+    FiltersComponent,
+    ConfirmDeleteActivityModal
   ],
   exports: [
     ActivityListComponent,
@@ -23,6 +25,9 @@ import { UserStatsComponent } from './activity-list/user-stats/user-stats.compon
   ],
   imports: [
     SharedModule
+  ],
+  entryComponents: [
+    ConfirmDeleteActivityModal
   ]
 })
 export class ActivityModule { }

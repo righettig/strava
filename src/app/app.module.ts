@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { ActivityModule } from './activities/activity.module';
 import { AuthModule } from './auth/auth.module';
@@ -19,7 +18,6 @@ import { AnalyticsModule } from './analytics/analytics.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule,
 
     SharedModule,
     ActivityModule,
