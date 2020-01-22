@@ -57,7 +57,7 @@ export class ActivityListComponent implements OnInit {
     this.errorMessage = "";
   }
 
-  errorMessage: string = "foo";
+  errorMessage: string;
 
   activities: IActivity[];
   filteredActivities: IActivity[];
