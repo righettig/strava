@@ -1,8 +1,8 @@
 export interface IActivity {
-  id: string;
+  id: number;
   name: string;
   description: string;
-  creationDate: Date;
+  creationDate: string; // Date;
   category: string;
   subcategory: string;
   icon: string;
