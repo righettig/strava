@@ -8,7 +8,19 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: "activities", component: ActivityListComponent },
+  { 
+    path: "activities/:id", 
+    //canActivate: [ActivityEditGuard],
+    component: ActivityEditComponent 
+  },
+  //{ path: "dashboard", component: DashboardComponent },
+  { path: "", redirectTo: "dashboard", pathMatch: "full" },
+  // { path: "**", component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +38,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   entryComponents: [
     ConfirmDeleteActivityModal
