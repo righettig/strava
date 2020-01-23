@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProfile, Profile } from './models/profile';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { ProfileApiService } from './profile-api.service';
 
@@ -12,6 +12,7 @@ import { ProfileApiService } from './profile-api.service';
 export class ProfileComponent implements OnInit {
 
   constructor(
+    private fb: FormBuilder,
     private auth: AuthService,
     private profileApi: ProfileApiService) { }
 
@@ -25,15 +26,15 @@ export class ProfileComponent implements OnInit {
         this.profile = data;
       }
       
-      this.profileForm = new FormGroup({
-        name:        new FormControl(this.profile.name),
-        birthday:    new FormControl(this.profile.birthday),
-        gender:      new FormControl(this.profile.gender),
-        location:    new FormControl(this.profile.location),
-        primaryClub: new FormControl(this.profile.primaryClub),
-        weight:      new FormControl(this.profile.weight),
-        vanityURL:   new FormControl(this.profile.vanityURL),
-        profileBio:  new FormControl(this.profile.profileBio)
+      this.profileForm = this.fb.group({
+        name:        this.profile.name,
+        birthday:    this.profile.birthday,
+        gender:      this.profile.gender,
+        location:    this.profile.location,
+        primaryClub: this.profile.primaryClub,
+        weight:      this.profile.weight,
+        vanityURL:   this.profile.vanityURL,
+        profileBio:  this.profile.profileBio
       });
     })
   }
@@ -48,9 +49,11 @@ export class ProfileComponent implements OnInit {
     this.profile.vanityURL   = this.profileForm.get("vanityURL").value;
     this.profile.profileBio  = this.profileForm.get("profileBio").value;
 
-    debugger;
     this.profileApi.update(this.profile).subscribe(success => {
       if (success) {
+        this.profileForm.markAsPristine();
+        this.profileForm.markAsUntouched();
+        
         alert("Profile saved successfully!");
 
       } else {

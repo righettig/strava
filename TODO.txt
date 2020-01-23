@@ -1,9 +1,6 @@
 edit
 	discard is bugged, wrong values are reset
 
-CanDeactivate route guard to save pending changes
-	requires dirty checks in place inside ActivityEdit Component
-
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
