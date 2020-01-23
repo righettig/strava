@@ -7,7 +7,7 @@
   </h1>
 
   <label for="username" class="sr-only">Email address or username</label>
-  <span *ngIf="usernameRef.touched && usernameRef.errors" class="validation-error">
+  <span *ngIf="(usernameRef.touched || usernameRef.dirty) && usernameRef.errors" class="validation-error">
     <small>Please enter your email address or username</small>
   </span>
   <input type="text" 
@@ -19,10 +19,10 @@
          autofocus 
          #usernameRef="ngModel"
          [(ngModel)]="username"
-         [ngClass]="{'is-invalid': usernameRef.touched && !usernameRef.valid}">
+         [ngClass]="{'is-invalid': (usernameRef.touched || usernameRef.dirty) && !usernameRef.valid}">
 
   <label for="password" class="sr-only">Password</label>
-  <span *ngIf="passwordRef.touched && passwordRef.errors" class="validation-error">
+  <span *ngIf="(passwordRef.touched || passwordRef.dirty) && passwordRef.errors" class="validation-error">
     <small>Please enter your password</small>
   </span>
   <input type="password" 
@@ -33,7 +33,7 @@
          required 
          #passwordRef="ngModel"
          [(ngModel)]="password"
-         [ngClass]="{'is-invalid': passwordRef.touched && !passwordRef.valid}">
+         [ngClass]="{'is-invalid': (passwordRef.touched || passwordRef.dirty) && !passwordRef.valid}">
 
   <div class="checkbox mb-3">
     <label>
