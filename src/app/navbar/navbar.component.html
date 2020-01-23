@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
     </ul>
-    <span class="username">{{currentUsername}}</span>
+    <a class="username" [routerLink]="['profile']">{{currentUsername}}</a>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">
       Logout
     </button>

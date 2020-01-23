@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { RouterModule } from '@angular/router';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { RouterModule } from '@angular/router';
     AuthModule,
     AnalyticsModule,
 
-    RouterModule
+    RouterModule,
+
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
