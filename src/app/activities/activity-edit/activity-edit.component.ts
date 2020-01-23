@@ -18,8 +18,9 @@ export class ActivityEditComponent implements OnInit {
   ngOnInit() {
     // retrieve activityId from route params
     const activityId = +this.route.snapshot.paramMap.get("id");
+
     this.activitiesApi.getActivity(activityId).subscribe(data => {
-      this.activity = data;
+      this.activity = Object.assign({}, data); // cloning the returned activity
     });
   }
 
@@ -27,10 +28,6 @@ export class ActivityEditComponent implements OnInit {
     this.activitiesApi.editActivity(this.activity).subscribe(data => {
       this.router.navigate(['activities']);
     });
-  }
-
-  get pendingChanges() {
-    return false;
   }
 
   activity: IActivity;

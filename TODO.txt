@@ -1,5 +1,5 @@
-New: template driven forms
-Edit: reactive forms
+edit
+	discard is bugged
 
 CanDeactivate route guard to save pending changes
 	requires dirty checks in place inside ActivityEdit Component
