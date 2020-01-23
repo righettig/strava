@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { tap, debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
 import { NgModel } from '@angular/forms';
-
-const localUrl = 'api/races.json';
+import { RacesApiService } from '../races-api.service';
 
 @Component({
   selector: 'app-races-list',
@@ -14,10 +12,14 @@ export class RacesListComponent implements OnInit {
 
   @ViewChild(NgModel, { static: true } ) public query: NgModel;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private racesApi: RacesApiService) { }
 
   ngOnInit() {
-    this.getRaces();
+    this.racesApi.getRaces().subscribe((data: any) => {
+      this.races = data.races.map(el => el.race);
+      this.filteredRaces = this.races;
+    })
   }
 
   ngAfterViewInit() {
@@ -28,15 +30,6 @@ export class RacesListComponent implements OnInit {
       tap(data => console.log('search: ' + data)),
     ).subscribe(value => {
       this.search(value);
-    })
-  }
-
-  getRaces() {
-    this.http.get(localUrl).pipe(
-      tap(data => console.log('getRaces: ' + JSON.stringify(data))),
-    ).subscribe((data: any) => {
-      this.races = data.races.map(el => el.race);
-      this.filteredRaces = this.races;
     })
   }
 
