@@ -1,5 +1,5 @@
 edit
-	discard is bugged
+	discard is bugged, wrong values are reset
 
 CanDeactivate route guard to save pending changes
 	requires dirty checks in place inside ActivityEdit Component

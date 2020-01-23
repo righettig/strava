@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivitiesApiService } from '../activities-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IActivity } from '../models/activity';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-activity-edit',
@@ -9,6 +10,8 @@ import { IActivity } from '../models/activity';
   styleUrls: ['./activity-edit.component.scss']
 })
 export class ActivityEditComponent implements OnInit {
+
+  @ViewChild(NgForm, { static: false } ) public formGroup: NgForm;
 
   constructor(
     private activitiesApi: ActivitiesApiService,
@@ -26,8 +29,15 @@ export class ActivityEditComponent implements OnInit {
 
   save() {
     this.activitiesApi.editActivity(this.activity).subscribe(data => {
+      this.formGroup.form.markAsPristine();
+      this.formGroup.form.markAsUntouched();
+
       this.router.navigate(['activities']);
     });
+  }
+
+  get dirty() {
+    return this.formGroup.dirty
   }
 
   activity: IActivity;

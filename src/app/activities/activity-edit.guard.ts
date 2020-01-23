@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ActivityEditComponent } from './activity-edit/activity-edit.component';
+import { ActivityNewComponent } from './activity-new/activity-new.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PendingChangesModal } from './pending-changes-modal/pending-changes-modal.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActivityEditGuard implements CanActivate, CanDeactivate<ActivityEditComponent> {
+export class ActivityEditGuard 
+  implements CanActivate, CanDeactivate<ActivityEditComponent | ActivityNewComponent> {
 
-  constructor(private router: Router) { }
+  constructor(
+    private modal: NgbModal,
+    private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,14 +29,18 @@ export class ActivityEditGuard implements CanActivate, CanDeactivate<ActivityEdi
   }
 
   canDeactivate(
-    component: ActivityEditComponent,
+    component: ActivityEditComponent | ActivityNewComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (component.pendingChanges) {
-      alert("there are pending changes.");
-      return false;
+    if (component.dirty) {
+      const modal = this.modal.open(PendingChangesModal)
+      
+      return modal.result
+        .then(() => true)
+        .catch(err => false)
+
     } else {
       return true;
     }

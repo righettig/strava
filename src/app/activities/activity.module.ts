@@ -10,11 +10,13 @@ import { UserStatsComponent } from './activity-list/user-stats/user-stats.compon
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ActivityEditGuard } from './activity-edit.guard';
+import { PendingChangesModal } from './pending-changes-modal/pending-changes-modal.component';
 
 const routes: Routes = [
   { path: "activities", component: ActivityListComponent },
   {
     path: "activities/create",
+    canDeactivate: [ActivityEditGuard],
     component: ActivityNewComponent,
   },
   { 
@@ -36,7 +38,8 @@ const routes: Routes = [
     ActivityNewComponent,
     UserStatsComponent,
     FiltersComponent,
-    ConfirmDeleteActivityModal
+    ConfirmDeleteActivityModal,
+    PendingChangesModal
   ],
   exports: [
     ActivityListComponent,
@@ -47,7 +50,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   entryComponents: [
-    ConfirmDeleteActivityModal
+    ConfirmDeleteActivityModal,
+    PendingChangesModal
   ]
 })
 export class ActivityModule { }

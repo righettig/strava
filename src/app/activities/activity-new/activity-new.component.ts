@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivitiesApiService } from '../activities-api.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-activity-new',
@@ -9,14 +10,23 @@ import { ActivitiesApiService } from '../activities-api.service';
 })
 export class ActivityNewComponent {
 
+  @ViewChild(NgForm, { static: true } ) public formGroup: NgForm;
+
   constructor(
     private router: Router,
     private activitiesApi: ActivitiesApiService) { }
 
   save(activity) {
     this.activitiesApi.insertActivity(activity).subscribe(data => {
+      this.formGroup.form.markAsPristine();
+      this.formGroup.form.markAsUntouched();
+
       this.router.navigate(['activities']);
     })
+  }
+
+  get dirty() {
+    return this.formGroup.dirty
   }
 
 }
