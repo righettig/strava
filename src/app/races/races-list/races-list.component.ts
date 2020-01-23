@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
+import { NgModel } from '@angular/forms';
 
 const localUrl = 'api/races.json';
-const TIMEOUT = 5000;
 
 @Component({
   selector: 'app-races-list',
@@ -12,25 +12,38 @@ const TIMEOUT = 5000;
 })
 export class RacesListComponent implements OnInit {
 
+  @ViewChild(NgModel, { static: true } ) public query: NgModel;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getRaces();
   }
 
-  search(query) {
-    this.filteredRaces = 
-      this.races.filter(
-        el => el.name.toLowerCase().indexOf(query.toLowerCase()) > -1);
+  ngAfterViewInit() {
+    this.query.valueChanges.pipe(
+      skip(1),
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(data => console.log('search: ' + data)),
+    ).subscribe(value => {
+      this.search(value);
+    })
   }
 
   getRaces() {
     this.http.get(localUrl).pipe(
-      tap(data => console.log('search: ' + JSON.stringify(data))),
+      tap(data => console.log('getRaces: ' + JSON.stringify(data))),
     ).subscribe((data: any) => {
       this.races = data.races.map(el => el.race);
       this.filteredRaces = this.races;
     })
+  }
+
+  private search(query) {
+    this.filteredRaces = 
+      this.races.filter(
+        el => el.name.toLowerCase().indexOf(query.toLowerCase()) > -1);
   }
 
   filteredRaces;

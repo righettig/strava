@@ -1,6 +1,10 @@
 edit
 	discard is bugged, wrong values are reset
 
+lazy loading a module
+
+authz checks, for instances "races can only be accessed by premium users"
+
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
@@ -10,11 +14,5 @@ routing
 delete with confirmation dialog
 	there is a bug!
 	
-minor
-	byCreationDateRangeFilter
-
 optional
-	throttle byCategoryFilter searches
-		need a string based criteria
-
 	update dependencies
