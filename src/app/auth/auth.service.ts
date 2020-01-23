@@ -12,7 +12,7 @@ export class AuthService {
 
   login(credentials: ILoginModel): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      setInterval(() => {
+      setTimeout(() => {
         this.setUser(credentials);
 
         resolve(true);
@@ -22,7 +22,7 @@ export class AuthService {
 
   logout(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      setInterval(() => {
+      setTimeout(() => {
         this.user = null;
 
         resolve(true);
@@ -32,7 +32,7 @@ export class AuthService {
 
   register(credentials: IRegisterModel) {
     return new Promise((resolve, reject) => {
-      setInterval(() => {
+      setTimeout(() => {
         this.setUser(credentials);
 
         resolve(true);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { faStrava } from '@fortawesome/free-brands-svg-icons';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -9,20 +9,26 @@ import { IRegisterModel } from '../models/register-model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   constructor(
     private auth: AuthService, 
     private router: Router) { }
 
-  ngOnInit() {
-  }
+  register() {
+    const registerModel = {
+      username: this.username,
+      password: this.password
+    }
 
-  register(credentials: IRegisterModel) {
-    this.auth.register(credentials).then(result => {
+    this.auth.register(registerModel).then(result => {
       this.router.navigate(["activities"]);
     })
   }
+
+  username: string;
+  password: string;
+  rememberMe: boolean;
 
   faStrava = faStrava;
 
