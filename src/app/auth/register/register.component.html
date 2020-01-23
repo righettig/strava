@@ -7,9 +7,6 @@
   </h1>
 
   <label for="username" class="sr-only">Email address or username</label>
-  <span *ngIf="(usernameRef.touched || usernameRef.dirty) && usernameRef.errors" class="validation-error">
-    <small>Please enter your email address or username</small>
-  </span>
   <input type="text" 
          id="username" 
          name="username" 
@@ -20,11 +17,13 @@
          #usernameRef="ngModel"
          [(ngModel)]="username"
          [ngClass]="{'is-invalid': (usernameRef.touched || usernameRef.dirty) && !usernameRef.valid}">
+  <span class="invalid-feedback">
+    <span *ngIf="(usernameRef.touched || usernameRef.dirty) && usernameRef.errors" class="validation-error">
+      <small>Please enter your email address or username</small>
+    </span>
+  </span>
 
   <label for="password" class="sr-only">Password</label>
-  <span *ngIf="passwordRef.touched && passwordRef.errors" class="validation-error">
-    <small>Please enter your password</small>
-  </span>
   <input type="password" 
          id="password" 
          name="password" 
@@ -34,11 +33,13 @@
          #passwordRef="ngModel"
          [(ngModel)]="password"
          [ngClass]="{'is-invalid': (passwordRef.touched || passwordRef.dirty) && !passwordRef.valid}">
+  <span class="invalid-feedback">
+    <span *ngIf="(passwordRef.touched || passwordRef.dirty) && passwordRef.errors" class="validation-error">
+      <small>Please enter your password</small>
+    </span>
+  </span>
 
   <label for="confirmPassword" class="sr-only">Confirm Password</label>
-  <span *ngIf="confirmPasswordRef.dirty && (password != confirmPassword)" class="validation-error">
-    <small>You have entered two different passwords</small>
-  </span>
   <input type="password" 
         id="confirmPassword" 
         name="confirmPassword" 
@@ -48,8 +49,13 @@
         #confirmPasswordRef="ngModel"
         [(ngModel)]="confirmPassword"
         [ngClass]="{'is-invalid': confirmPasswordRef.dirty && (password != confirmPassword)}">
+  <span class="invalid-feedback">
+    <span *ngIf="confirmPasswordRef.dirty && (password != confirmPassword)" class="validation-error">
+      <small>You have entered two different passwords</small>
+    </span>
+  </span>
 
-  <div class="checkbox mb-3">
+  <div class="checkbox mb-3" class="remember-me">
     <label>
       <input type="checkbox" 
              value="remember-me" 

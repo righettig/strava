@@ -33,11 +33,14 @@ body {
   z-index: 2;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.validation-error {
-  color: red;
+.invalid-feedback {
+  margin-bottom: 10px;
+}
+
+.remember-me {
+  margin-top: 10px;
 }
