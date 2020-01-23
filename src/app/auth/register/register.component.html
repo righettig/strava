@@ -2,7 +2,9 @@
 <form #f="ngForm" class="form-signin text-center" (ngSubmit)="register(f.value)" novalidate>
   
   <fa-icon [icon]="faStrava" class="fa-6x"></fa-icon>
-  <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+  <h1 class="h3 mb-3 font-weight-normal">
+    Please sign up <small>or <a [routerLink]="['/login']">sign-in</a></small>
+  </h1>
 
   <label for="username" class="sr-only">Email address or username</label>
   <span *ngIf="usernameRef.touched && usernameRef.errors" class="validation-error">
