@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { IActivity } from './models/activity';
-import { catchError, tap, filter, timeout, map, audit } from 'rxjs/operators';
+import { catchError, tap, timeout, map } from 'rxjs/operators';
+import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
 
 const localUrl = 'api/activities.json';
 const TIMEOUT = 5000;
@@ -31,10 +32,6 @@ export class ActivitiesApiService {
   }
 
   getActivity(activityId: number): Observable<IActivity> {
-    // if (activityId === 0) {
-    //   return of(this.initializeActivity());
-    // }
-
     if (this.activities) {
       return of(this.activities.find(a => a.id == activityId));
 
@@ -67,6 +64,13 @@ export class ActivitiesApiService {
 
   insertActivity(activity: IActivity): Observable<number> {
     activity.id = this.activities.length;
+    activity.creationDate = new Date().toLocaleDateString();
+
+    switch (activity.category) {
+      case "run":  activity.icon = faRunning; break;
+      case "ride": activity.icon = faBicycle; break;
+      case "hike": activity.icon = faHiking;  break;
+    }
 
     this.activities.push(activity);
 
@@ -105,19 +109,6 @@ export class ActivitiesApiService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-  }
-
-  private initializeActivity(): IActivity {
-    // Return an initialized object
-    return {
-      id: 0,
-      name: '',
-      category: '',
-      description: '',
-      creationDate: '',
-      subcategory: '',
-      icon: null
-    };
   }
 
 }

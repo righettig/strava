@@ -1,30 +1,63 @@
-<form *ngIf="activity">
+<!-- Template-driven form -->
+<form #f="ngForm" (ngSubmit)="save(f.value)" novalidate>
+  
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Name" 
-      [(ngModel)]="activity.name">
+    <input type="text" 
+           id="name" 
+           name="name"
+           class="form-control"
+           placeholder="Name"
+           required 
+           autofocus
+           #nameRef="ngModel"
+           [(ngModel)]="name"
+           [ngClass]="{'is-invalid': (nameRef.touched || nameRef.dirty) && !nameRef.valid}">
+    <span class="invalid-feedback">
+      <span *ngIf="(nameRef.touched || nameRef.dirty) && nameRef.errors">
+        <small>Please enter a name for the activity</small>
+      </span>
+    </span>
   </div>
+  
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description" placeholder="Description"
-      [(ngModel)]="activity.description">
+    <input type="text"
+           id="description" 
+           name="description" 
+           class="form-control"
+           placeholder="Description"
+           [(ngModel)]="description">
   </div>
+  
   <div class="form-group">
     <label for="category">Category</label>
-    <input type="text" class="form-control" id="category" name="category" placeholder="Category"
-      [(ngModel)]="activity.category">
+    <input type="text" 
+           id="category" 
+           name="category" 
+           class="form-control"
+           placeholder="Category"
+           [(ngModel)]="category">
   </div>
+  
   <div class="form-group">
     <label for="subcategory">Subcategory</label>
-    <input type="text" class="form-control" id="subcategory" name="subcategory" placeholder="Subcategory"
-      [(ngModel)]="activity.subcategory">
+    <input type="text" 
+           id="subcategory" 
+           name="subcategory"
+           class="form-control"
+           placeholder="Subcategory"
+           [(ngModel)]="subcategory">
   </div>
-  <button class="btn btn-primary" type="submit" (click)="save()">
+  
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
     Save
   </button>
-  <button class="btn btn-default" type="reset" (click)="discard()">
+
+  <button class="btn btn-default" type="reset" [disabled]="f.pristine" (click)="f.reset()">
     Discard
   </button>
+
 </form>
 
 <a [routerLink]="['/activities']">Back</a>
