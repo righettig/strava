@@ -73,6 +73,24 @@ export class ActivitiesApiService {
     return of(activity.id);
   }
 
+  editActivity(activity: IActivity): Observable<boolean> {
+    if (this.activities) {
+      const index = this.activities.findIndex(a => a.id == activity.id);
+      
+      if (index > -1) {
+        this.activities.splice(index, 1);
+        this.activities.push(activity);
+        return of(true);
+
+      } else {
+        return of(false);
+      }
+     
+    } else {
+      return of(false);
+    }
+  }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

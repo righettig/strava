@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesApiService } from '../activities-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IActivity } from '../models/activity';
 
 @Component({
@@ -12,6 +12,7 @@ export class ActivityEditComponent implements OnInit {
 
   constructor(
     private activitiesApi: ActivitiesApiService,
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -19,6 +20,12 @@ export class ActivityEditComponent implements OnInit {
     const activityId = +this.route.snapshot.paramMap.get("id");
     this.activitiesApi.getActivity(activityId).subscribe(data => {
       this.activity = data;
+    });
+  }
+
+  save() {
+    this.activitiesApi.editActivity(this.activity).subscribe(data => {
+      this.router.navigate(['activities']);
     });
   }
 
