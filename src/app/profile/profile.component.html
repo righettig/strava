@@ -8,10 +8,10 @@
          placeholder="Name" 
          formControlName="name"
          autofocus
-         [ngClass]="{'is-invalid': (profileForm.get('name').touched || profileForm.get('name').dirty) && !profileForm.get('name').valid}">
+         [ngClass]="{'is-invalid': nameValidationMsg}">
   <span class="invalid-feedback">
-     <span *ngIf="(profileForm.get('name').touched || profileForm.get('name').dirty) && profileForm.get('name').errors">
-        <small>Please enter your name</small>
+     <span *ngIf="nameValidationMsg"> <!-- NB: here I have moved the validation logic in the component class -->
+        <small>{{nameValidationMsg}}</small>
      </span>
   </span>
 

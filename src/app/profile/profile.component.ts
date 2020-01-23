@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProfile, Profile } from './models/profile';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { ProfileApiService } from './profile-api.service';
 
@@ -37,6 +37,11 @@ export class ProfileComponent implements OnInit {
         vanityURL:   [this.profile.vanityURL,   Validators.maxLength(256)],
         profileBio:  [this.profile.profileBio,  Validators.maxLength(512)]
       });
+
+      const nameControl = this.profileForm.get("name");
+      nameControl.valueChanges.subscribe(value => {
+        this.validate(nameControl);
+      })
     })
   }
 
@@ -63,6 +68,15 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
+
+  validate(c: AbstractControl) {
+    this.nameValidationMsg = "";
+    if ((c.touched || c.dirty) && !c.valid) {
+      this.nameValidationMsg = "Please enter your name";
+    }
+  }
+
+  nameValidationMsg: string; 
 
   profileForm: FormGroup;
   profile: IProfile;
