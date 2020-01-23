@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   get currentUsername() {
-    return this.user.username;
+    return this.user? this.user.username : '';
   }
 
   user: IUserModel;
