@@ -4,9 +4,6 @@ Edit: reactive forms
 CanDeactivate route guard to save pending changes
 	requires dirty checks in place inside ActivityEdit Component
 
-userSettings page
-	showcase a more complex form
-
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m

@@ -1,1 +1,91 @@
-<p>profile works!</p>
+<!-- Reactive form -->
+<form *ngIf="profileForm" class="form-signin text-center" (ngSubmit)="save()" [formGroup]="profileForm" novalidate>
+  
+  <label for="name" class="sr-only">Name</label>
+  <input type="text" 
+         id="name" 
+         class="form-control" 
+         placeholder="Name" 
+         formControlName="name"
+         required 
+         autofocus
+         [ngClass]="{'is-invalid': (profileForm.get('name').touched || profileForm.get('name').dirty) && !profileForm.get('name').valid}">
+  <span class="invalid-feedback">
+     <span *ngIf="(profileForm.get('name').touched || profileForm.get('name').dirty) && profileForm.get('name').errors">
+        <small>Please enter your name</small>
+     </span>
+  </span>
+
+  <!-- idea for refactoring -->
+  <!-- <app-form-field name="name" required autofocus></app-form-field> -->
+
+  <label for="birthday" class="sr-only">Birthday</label>
+  <input type="text" 
+         id="birthday" 
+         class="form-control" 
+         placeholder="Birthday" 
+         formControlName="birthday">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="gender" class="sr-only">Gender</label>
+  <input type="text" 
+         id="gender" 
+         class="form-control" 
+         placeholder="Gender" 
+         formControlName="gender">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="location" class="sr-only">Location</label>
+  <input type="text" 
+         id="location" 
+         class="form-control" 
+         placeholder="Location" 
+         formControlName="location">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="primaryClub" class="sr-only">Primary Club</label>
+  <input type="text" 
+         id="primaryClub" 
+         class="form-control" 
+         placeholder="Primary Club" 
+         formControlName="primaryClub">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="weight" class="sr-only">Weight</label>
+  <input type="text" 
+         id="weight" 
+         class="form-control" 
+         placeholder="Weight" 
+         formControlName="weight">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="vanityURL" class="sr-only">Vanity URL</label>
+  <input type="text" 
+         id="vanityURL" 
+         class="form-control" 
+         placeholder="Vanity URL" 
+         formControlName="vanityURL">
+  <span class="invalid-feedback">
+  </span>
+
+  <label for="profileBio" class="sr-only">Profile Bio</label>
+  <input type="text" 
+         id="profileBio" 
+         class="form-control" 
+         placeholder="Profile Bio" 
+         formControlName="profileBio">
+  <span class="invalid-feedback">
+  </span>
+
+  <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!profileForm.valid">
+     Save
+  </button>
+
+</form>
+
+<a [routerLink]="['/activities']">Back</a>
