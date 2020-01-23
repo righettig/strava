@@ -6,6 +6,9 @@
   <app-filters 
     [filterBy]="filterBy" 
     (onFilter)="onFilter($event)"></app-filters>
+
+    <a class="btn" [routerLink]="['create']">
+      <fa-icon [icon]="faPlusSquare"></fa-icon> Add Activity</a>
 </div>
 
 <div class="activity-list">

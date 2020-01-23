@@ -1,3 +1,9 @@
+amend
+	
+CanDeactivate route guard to save pending changes
+	requires dirty checks in place inside ActivityEdit Component
+
+
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
@@ -5,12 +11,8 @@ routing
 	PageNotFoundComponent when searching an activity that does not exist
 
 delete with confirmation dialog
-enter
-amend
+	there is a bug!
 	
-CanDeactivate route guard to save pending changes
-	requires dirty checks in place inside ActivityEdit Component
-
 minor
 	byCreationDateRangeFilter
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IActivity } from 'src/app/activities/models/activity';
 import { ActivitiesApiService } from '../activities-api.service';
 import { ActivitiesParamsService } from '../activities-params.service';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-activity-list',
@@ -56,6 +57,8 @@ export class ActivityListComponent implements OnInit {
   dismissError() {
     this.errorMessage = "";
   }
+
+  faPlusSquare = faPlusSquare;
 
   errorMessage: string;
 

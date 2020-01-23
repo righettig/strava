@@ -17,18 +17,23 @@ export class ActivitiesApiService {
   activities: IActivity[]; // in-memory cache
 
   getActivities(): Observable<IActivity[]> {
-    return this.http.get<IActivity[]>(localUrl).pipe(
-      tap(data => this.activities = data),
-      tap(data => console.log("getActivities: " + JSON.stringify(data))),
-      timeout(TIMEOUT),
-      catchError(this.handleError)
-    );
+    if (this.activities) {
+      return of(this.activities);
+
+    } else {
+      return this.http.get<IActivity[]>(localUrl).pipe(
+        tap(data => this.activities = data),
+        tap(data => console.log("getActivities: " + JSON.stringify(data))),
+        timeout(TIMEOUT),
+        catchError(this.handleError)
+      );
+    }
   }
 
   getActivity(activityId: number): Observable<IActivity> {
-    if (activityId === 0) {
-      return of(this.initializeActivity());
-    }
+    // if (activityId === 0) {
+    //   return of(this.initializeActivity());
+    // }
 
     if (this.activities) {
       return of(this.activities.find(a => a.id == activityId));
@@ -58,6 +63,14 @@ export class ActivitiesApiService {
     } else {
       return of(false);
     }
+  }
+
+  insertActivity(activity: IActivity): Observable<number> {
+    activity.id = this.activities.length;
+
+    this.activities.push(activity);
+
+    return of(activity.id);
   }
 
   private handleError(err: HttpErrorResponse) {
