@@ -16,6 +16,10 @@ export class RegisterComponent {
     private router: Router) { }
 
   register(model: IRegisterModel) {
+    if (!model || !model.username || !model.password) {
+      return;
+    }
+
     this.auth.register(model).then(result => {
       this.router.navigate(["activities"]);
     })

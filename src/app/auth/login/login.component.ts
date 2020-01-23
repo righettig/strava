@@ -16,7 +16,7 @@ export class LoginComponent {
     private router: Router) { }
 
   login(model: ILoginModel) {
-    if (!model || model.username || model.password) {
+    if (!model || !model.username || !model.password) {
       return;
     }
     
