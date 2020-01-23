@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { RouterModule } from '@angular/router';
 import { ProfileModule } from './profile/profile.module';
+import { RacesModule } from './races/races.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { ProfileModule } from './profile/profile.module';
 
     RouterModule,
 
-    ProfileModule
+    ProfileModule,
+
+    RacesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

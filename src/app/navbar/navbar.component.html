@@ -6,6 +6,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['activities']">Activities</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['races']">Races</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['my-races']">My Races</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> -->
     </ul>
     <a class="username" [routerLink]="['profile']">{{currentUsername}}</a>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">
