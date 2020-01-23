@@ -15,12 +15,12 @@ export class LoginComponent {
     private auth: AuthService,
     private router: Router) { }
 
-  login(loginModel: ILoginModel) {
-    if (!loginModel || loginModel.username || loginModel.password) {
+  login(model: ILoginModel) {
+    if (!model || model.username || model.password) {
       return;
     }
     
-    this.auth.login(loginModel).then(result => {
+    this.auth.login(model).then(result => {
       this.router.navigate(["activities"]);
     })
   }

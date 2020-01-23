@@ -15,20 +15,11 @@ export class RegisterComponent {
     private auth: AuthService, 
     private router: Router) { }
 
-  register() {
-    const registerModel = {
-      username: this.username,
-      password: this.password
-    }
-
-    this.auth.register(registerModel).then(result => {
+  register(model: IRegisterModel) {
+    this.auth.register(model).then(result => {
       this.router.navigate(["activities"]);
     })
   }
-
-  username: string;
-  password: string;
-  rememberMe: boolean;
 
   faStrava = faStrava;
 
