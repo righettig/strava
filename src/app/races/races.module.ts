@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RacesListComponent } from './races-list/races-list.component';
 import { MyRacesComponent } from './my-races/my-races.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared/shared.module';
 
 const routes: Routes = [
   { path: "races",    component: RacesListComponent },
@@ -13,7 +13,7 @@ const routes: Routes = [
   declarations: [RacesListComponent, MyRacesComponent],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    SharedModule
   ]
 })
 export class RacesModule { }
