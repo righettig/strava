@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProfile, Profile } from './models/profile';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { ProfileApiService } from './profile-api.service';
 
@@ -27,20 +27,22 @@ export class ProfileComponent implements OnInit {
       }
       
       this.profileForm = this.fb.group({
-        name:        this.profile.name,
-        birthday:    this.profile.birthday,
-        gender:      this.profile.gender,
-        location:    this.profile.location,
-        primaryClub: this.profile.primaryClub,
-        weight:      this.profile.weight,
-        vanityURL:   this.profile.vanityURL,
-        profileBio:  this.profile.profileBio
+        name:        [this.profile.name, Validators.required],
+        email:       [this.profile.email, Validators.email],
+        birthday:     this.profile.birthday,
+        gender:       this.profile.gender,
+        location:     this.profile.location,
+        primaryClub:  this.profile.primaryClub,
+        weight:       this.profile.weight,
+        vanityURL:    this.profile.vanityURL,
+        profileBio:   this.profile.profileBio
       });
     })
   }
 
   save() {
     this.profile.name        = this.profileForm.get("name").value;
+    this.profile.email       = this.profileForm.get("email").value;
     this.profile.birthday    = this.profileForm.get("birthday").value;
     this.profile.gender      = this.profileForm.get("gender").value;
     this.profile.location    = this.profileForm.get("location").value;

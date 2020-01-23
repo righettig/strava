@@ -1,5 +1,6 @@
 export interface IProfile {
   name: string;
+  email: string;
   birthday: string;
   gender: string;
   location: string;
@@ -10,7 +11,8 @@ export interface IProfile {
 }
 
 export class Profile implements IProfile {
-  name: string;  
+  name: string; 
+  email: string; 
   birthday: string;
   gender: string;
   location: string;
