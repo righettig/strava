@@ -34,8 +34,8 @@
          [ngClass]="{'is-invalid': passwordRef.touched && !passwordRef.valid}">
 
   <label for="confirmPassword" class="sr-only">Confirm Password</label>
-  <span *ngIf="confirmPasswordRef.touched && confirmPasswordRef.errors" class="validation-error">
-    <small>Please confirm your password</small>
+  <span *ngIf="confirmPasswordRef.dirty && (password != confirmPassword)" class="validation-error">
+    <small>You have entered two different passwords</small>
   </span>
   <input type="password" 
         id="confirmPassword" 
