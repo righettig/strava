@@ -27,15 +27,15 @@ export class ProfileComponent implements OnInit {
       }
       
       this.profileForm = this.fb.group({
-        name:        [this.profile.name, Validators.required],
-        email:       [this.profile.email, Validators.email],
+        name:        [this.profile.name,       [Validators.required, Validators.maxLength(32)]],
+        email:       [this.profile.email,       Validators.email],
         birthday:     this.profile.birthday,
         gender:       this.profile.gender,
-        location:     this.profile.location,
-        primaryClub:  this.profile.primaryClub,
+        location:    [this.profile.location,    Validators.maxLength(64)],
+        primaryClub: [this.profile.primaryClub, Validators.maxLength(64)],
         weight:       this.profile.weight,
-        vanityURL:    this.profile.vanityURL,
-        profileBio:   this.profile.profileBio
+        vanityURL:   [this.profile.vanityURL,   Validators.maxLength(256)],
+        profileBio:  [this.profile.profileBio,  Validators.maxLength(512)]
       });
     })
   }
