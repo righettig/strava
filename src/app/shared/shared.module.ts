@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DefaultPageLinkComponent } from './default-page-link/default-page-link.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
+  declarations: [DefaultPageLinkComponent],
   imports: [
+    RouterModule,
     CommonModule
   ],
   exports: [
+    DefaultPageLinkComponent,
+    
     CommonModule,
     FormsModule,
     NgbModule,

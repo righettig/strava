@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { FiltersComponent } from './filters/filters.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';

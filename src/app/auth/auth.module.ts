@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';

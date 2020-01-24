@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnalyticsComponent } from './analytics.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: "analytics", component: AnalyticsComponent }
@@ -10,8 +11,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [AnalyticsComponent],
   imports: [
-    RouterModule.forChild(routes),
-    CommonModule
+    SharedModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class AnalyticsModule { }
