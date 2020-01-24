@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './authentication.guard';
@@ -8,18 +8,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
 import { ProfileModule } from './profile/profile.module';
 import { RacesModule } from './races/races.module';
 import { ShoesModule } from './shoes/shoes.module';
-
-@Component({
-  template: `
-    <app-navbar></app-navbar>
-
-    <main role="main" class="container">
-      <router-outlet></router-outlet>
-    </main>
-  `,
-})
-export class AppLayoutComponent {
-}
+import { AppLayoutComponent } from './app-layout/app-layout.component';
 
 const routes: Routes = [
   {
