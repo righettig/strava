@@ -10,9 +10,6 @@ authz checks, for instances "races can only be accessed by premium users"
 	
 ==========> finish by tomorrow
 	
-edit
-	discard is bugged, wrong values are reset
-
 delete with confirmation dialog
 	there is a bug!
 	

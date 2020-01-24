@@ -24,6 +24,7 @@ export class ActivityEditComponent implements OnInit {
 
     this.activitiesApi.getActivity(activityId).subscribe(data => {
       this.activity = Object.assign({}, data); // cloning the returned activity
+      this.activity_backup = Object.assign({}, this.activity);
     });
   }
 
@@ -36,9 +37,18 @@ export class ActivityEditComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.activity = Object.assign({}, this.activity_backup);
+
+    this.formGroup.reset(this.activity);
+  }
+
   get dirty() {
     return this.formGroup.dirty
   }
+
+  // NB: used when resetting the form. It holds the previous activity value.
+  activity_backup: IActivity;
 
   activity: IActivity;
 
