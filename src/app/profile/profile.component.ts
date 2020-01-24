@@ -42,6 +42,8 @@ export class ProfileComponent implements OnInit {
       nameControl.valueChanges.subscribe(value => {
         this.validate(nameControl);
       })
+
+      // TODO: validate email using observable (debounceTime)?
     })
   }
 

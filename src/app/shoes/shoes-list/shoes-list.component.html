@@ -1,1 +1,51 @@
-<p>shoes-list works!</p>
+<div class="container-fluid bg-light py-3">
+
+  <form class="form" role="form" autocomplete="off"
+    (ngSubmit)="save()" [formGroup]="shoesForm" novalidate>
+
+    <div class="controls">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="brand">Brand *</label>
+            <input id="brand" type="text" class="form-control form-control-sm" placeholder="Brand *">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="model">Model *</label>
+            <input id="model" type="text" class="form-control form-control-sm" placeholder="Model *">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" type="text" class="form-control form-control-sm" placeholder="Nickname">
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" class="form-control form-control-sm" 
+              placeholder="Add additional information about your shoes (color, condition, etc)" rows="2">
+            </textarea>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <input type="submit" class="btn btn-warning btn-send" value="Save">
+      </div>
+    </div>
+
+  </form>
+
+</div>

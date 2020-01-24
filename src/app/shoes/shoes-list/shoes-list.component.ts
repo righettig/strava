@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-shoes-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit() {
+    this.shoesForm = this.fb.group({
+    });
   }
+
+  shoesForm: FormGroup;
 
 }
