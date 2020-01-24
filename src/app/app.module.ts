@@ -5,18 +5,15 @@ import { ActivityModule } from './activities/activity.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AnalyticsModule } from './analytics/analytics.module';
-import { RouterModule, Routes } from '@angular/router';
 import { ProfileModule } from './profile/profile.module';
 import { RacesModule } from './races/races.module';
 import { ShoesModule } from './shoes/shoes.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  { path: "**", component: PageNotFoundComponent }
-];
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +33,8 @@ const routes: Routes = [
     ProfileModule,
     RacesModule,
     ShoesModule,
-
-    RouterModule.forRoot(routes)
+    
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
