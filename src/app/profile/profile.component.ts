@@ -26,17 +26,7 @@ export class ProfileComponent implements OnInit {
         this.profile = data;
       }
       
-      this.profileForm = this.fb.group({
-        name:        [this.profile.name,       [Validators.required, Validators.maxLength(32)]],
-        email:       [this.profile.email,       Validators.email],
-        birthday:     this.profile.birthday,
-        gender:       this.profile.gender,
-        location:    [this.profile.location,    Validators.maxLength(64)],
-        primaryClub: [this.profile.primaryClub, Validators.maxLength(64)],
-        weight:       this.profile.weight,
-        vanityURL:   [this.profile.vanityURL,   Validators.maxLength(256)],
-        profileBio:  [this.profile.profileBio,  Validators.maxLength(512)]
-      });
+      this.buildForm();
 
       const nameControl = this.profileForm.get("name");
       nameControl.valueChanges.subscribe(value => {
@@ -71,7 +61,25 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  validate(c: AbstractControl) {
+  reset() {
+    this.buildForm();
+  }
+
+  private buildForm() {
+    this.profileForm = this.fb.group({
+      name:        [this.profile.name,       [Validators.required, Validators.maxLength(32)]],
+      email:       [this.profile.email,       Validators.email],
+      birthday:     this.profile.birthday,
+      gender:       this.profile.gender,
+      location:    [this.profile.location,    Validators.maxLength(64)],
+      primaryClub: [this.profile.primaryClub, Validators.maxLength(64)],
+      weight:       this.profile.weight,
+      vanityURL:   [this.profile.vanityURL,   Validators.maxLength(256)],
+      profileBio:  [this.profile.profileBio,  Validators.maxLength(512)]
+    });
+  }
+
+  private validate(c: AbstractControl) {
     this.nameValidationMsg = "";
     if ((c.touched || c.dirty) && !c.valid) {
       this.nameValidationMsg = "Please enter your name";
