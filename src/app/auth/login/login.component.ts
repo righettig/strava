@@ -5,7 +5,6 @@ import { AuthService } from '../auth.service';
 import { ILoginModel } from '../models/login-model';
 
 @Component({
-  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

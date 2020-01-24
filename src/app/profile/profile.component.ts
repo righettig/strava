@@ -5,7 +5,6 @@ import { AuthService } from '../auth/auth.service';
 import { ProfileApiService } from './profile-api.service';
 
 @Component({
-  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormArray } from '
 import { filter, groupBy, debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-shoes-list',
   templateUrl: './shoes-list.component.html',
   styleUrls: ['./shoes-list.component.scss']
 })

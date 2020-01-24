@@ -5,7 +5,6 @@ import { ActivitiesParamsService } from '../activities-params.service';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
   styleUrls: ['./activity-list.component.scss']
 })

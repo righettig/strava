@@ -5,7 +5,6 @@ import { IActivity } from '../models/activity';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-activity-edit',
   templateUrl: './activity-edit.component.html',
   styleUrls: ['./activity-edit.component.scss']
 })

@@ -4,7 +4,6 @@ import { ActivitiesApiService } from '../activities-api.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-activity-new',
   templateUrl: './activity-new.component.html',
   styleUrls: ['./activity-new.component.scss']
 })

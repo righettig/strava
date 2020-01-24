@@ -4,7 +4,6 @@ import { NgModel } from '@angular/forms';
 import { RacesApiService } from '../races-api.service';
 
 @Component({
-  selector: 'app-races-list',
   templateUrl: './races-list.component.html',
   styleUrls: ['./races-list.component.scss']
 })
