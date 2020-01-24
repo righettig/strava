@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   get isLoggedIn() {
-    return this.user !== null;
+    return this.user != null;
   }
 
   get currentUsername() {

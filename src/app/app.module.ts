@@ -13,12 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     PageNotFoundComponent
   ],
   imports: [

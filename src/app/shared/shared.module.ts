@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     DefaultPageLinkComponent,
     
+    RouterModule,
     CommonModule,
     FormsModule,
     NgbModule,

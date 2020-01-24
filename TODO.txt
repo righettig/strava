@@ -1,9 +1,3 @@
-routing
-	different "layout" based on loggedin state
-		=> Angular Routing (Deborah Kurata) 4h:49m
-
-	PageNotFoundComponent when searching an activity that does not exist
-
 lazy loading a module
 
 authz checks, for instances "races can only be accessed by premium users"
