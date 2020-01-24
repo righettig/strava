@@ -1,103 +1,154 @@
-<!-- Reactive form -->
-<form *ngIf="profileForm" class="form-signin text-center" (ngSubmit)="save()" [formGroup]="profileForm" novalidate>
+<div class="container py-3">
+  <div class="row">
+    <div class="mx-auto col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Your Profile</h4>
+        </div>
+        <div class="card-body">
+
+          <!-- Reactive form -->
+          <form *ngIf="profileForm" class="form" role="form" autocomplete="off"
+                (ngSubmit)="save()" [formGroup]="profileForm" novalidate>
   
-  <label for="name" class="sr-only">Name</label>
-  <input type="text" 
-         id="name" 
-         class="form-control" 
-         placeholder="Name" 
-         formControlName="name"
-         autofocus
-         [ngClass]="{'is-invalid': nameValidationMsg}">
-  <span class="invalid-feedback">
-     <span *ngIf="nameValidationMsg"> <!-- NB: here I have moved the validation logic in the component class -->
-        <small>{{nameValidationMsg}}</small>
-     </span>
-  </span>
+            <div class="form-group row">
+              <label for="name" class="col-lg-3 col-form-label form-control-label">Name</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="name" 
+                       class="form-control" 
+                       placeholder="Name" 
+                       formControlName="name"
+                       autofocus
+                       [ngClass]="{'is-invalid': nameValidationMsg}">
 
-  <!-- idea for refactoring -->
-  <!-- <app-form-field name="name" required autofocus></app-form-field> -->
+                <span class="invalid-feedback">
+                  <span *ngIf="nameValidationMsg"> <!-- NB: I've moved the validation logic in the component class -->
+                    <small>{{nameValidationMsg}}</small>
+                  </span>
+                </span>
+              </div>
+            </div>
+          
+            <!-- idea for refactoring -->
+            <!-- <app-form-field name="name" required autofocus></app-form-field> -->
+          
+            <div class="form-group row">
+              <label for="email" class="col-lg-3 col-form-label form-control-label">Email</label>
+              <div class="col-lg-9">
+                <input type="email" 
+                       id="email" 
+                       class="form-control" 
+                       placeholder="Email" 
+                       formControlName="email"
+                       [ngClass]="{'is-invalid': (profileForm.get('email').touched || profileForm.get('email').dirty) && !profileForm.get('email').valid}">
+              
+                <span class="invalid-feedback">
+                  <span *ngIf="(profileForm.get('email').touched || profileForm.get('email').dirty) && profileForm.get('email').errors">
+                    <small>Please enter a valid email</small>
+                  </span>
+                </span>
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label for="birthday" class="col-lg-3 col-form-label form-control-label">Birthday</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="birthday" 
+                       class="form-control" 
+                       placeholder="Birthday" 
+                       formControlName="birthday">
+                <span class="invalid-feedback"></span>
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label for="gender" class="col-lg-3 col-form-label form-control-label">Gender</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="gender" 
+                       class="form-control" 
+                       placeholder="Gender" 
+                       formControlName="gender">
+                <span class="invalid-feedback"></span>    
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label for="location" class="col-lg-3 col-form-label form-control-label">Location</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="location" 
+                       class="form-control" 
+                       placeholder="Location" 
+                       formControlName="location">
+                <span class="invalid-feedback"></span>
+              </div>
+            </div>          
+          
+            <div class="form-group row">
+              <label for="primaryClub" class="col-lg-3 col-form-label form-control-label">Primary Club</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="primaryClub" 
+                       class="form-control" 
+                       placeholder="Primary Club" 
+                       formControlName="primaryClub">
+                <span class="invalid-feedback"></span>
+              </div>
+            </div>
 
-  <label for="name" class="sr-only">Email</label>
-  <input type="email" 
-         id="email" 
-         class="form-control" 
-         placeholder="Email" 
-         formControlName="email"
-         [ngClass]="{'is-invalid': (profileForm.get('email').touched || profileForm.get('email').dirty) && !profileForm.get('email').valid}">
-  <span class="invalid-feedback">
-     <span *ngIf="(profileForm.get('email').touched || profileForm.get('email').dirty) && profileForm.get('email').errors">
-        <small>Please enter a valid email</small>
-     </span>
-  </span>
+            <div class="form-group row">
+              <label for="weight" class="col-lg-3 col-form-label form-control-label">Weight</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="weight" 
+                       class="form-control" 
+                       placeholder="Weight" 
+                       formControlName="weight">
+               <span class="invalid-feedback"></span>
+              </div>
+            </div>
 
-  <label for="birthday" class="sr-only">Birthday</label>
-  <input type="text" 
-         id="birthday" 
-         class="form-control" 
-         placeholder="Birthday" 
-         formControlName="birthday">
-  <span class="invalid-feedback">
-  </span>
+            <div class="form-group row">
+              <label for="vanityURL" class="col-lg-3 col-form-label form-control-label">Vanity URL</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="vanityURL" 
+                       class="form-control" 
+                       placeholder="Vanity URL" 
+                       formControlName="vanityURL">
+                <span class="invalid-feedback"></span>
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label for="profileBio" class="col-lg-3 col-form-label form-control-label">Profile Bio</label>
+              <div class="col-lg-9">
+                <input type="text" 
+                       id="profileBio" 
+                       class="form-control" 
+                       placeholder="Profile Bio" 
+                       formControlName="profileBio">
+                <span class="invalid-feedback"></span>
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+                  <input type="reset" class="btn btn-secondary" value="Cancel">
+                  <input type="submit" class="btn btn-primary" [disabled]="!profileForm.valid" value="Save Changes">
+              </div>
+            </div>
+                      
+          </form>          
 
-  <label for="gender" class="sr-only">Gender</label>
-  <input type="text" 
-         id="gender" 
-         class="form-control" 
-         placeholder="Gender" 
-         formControlName="gender">
-  <span class="invalid-feedback">
-  </span>
-
-  <label for="location" class="sr-only">Location</label>
-  <input type="text" 
-         id="location" 
-         class="form-control" 
-         placeholder="Location" 
-         formControlName="location">
-  <span class="invalid-feedback">
-  </span>
-
-  <label for="primaryClub" class="sr-only">Primary Club</label>
-  <input type="text" 
-         id="primaryClub" 
-         class="form-control" 
-         placeholder="Primary Club" 
-         formControlName="primaryClub">
-  <span class="invalid-feedback">
-  </span>
-
-  <label for="weight" class="sr-only">Weight</label>
-  <input type="text" 
-         id="weight" 
-         class="form-control" 
-         placeholder="Weight" 
-         formControlName="weight">
-  <span class="invalid-feedback">
-  </span>
-
-  <label for="vanityURL" class="sr-only">Vanity URL</label>
-  <input type="text" 
-         id="vanityURL" 
-         class="form-control" 
-         placeholder="Vanity URL" 
-         formControlName="vanityURL">
-  <span class="invalid-feedback">
-  </span>
-
-  <label for="profileBio" class="sr-only">Profile Bio</label>
-  <input type="text" 
-         id="profileBio" 
-         class="form-control" 
-         placeholder="Profile Bio" 
-         formControlName="profileBio">
-  <span class="invalid-feedback">
-  </span>
-
-  <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!profileForm.valid">
-     Save
-  </button>
-
-</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <a [routerLink]="['/activities']">Back</a>
