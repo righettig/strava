@@ -15,8 +15,6 @@ import { ShoesModule } from './shoes/shoes.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  //{ path: "dashboard", component: DashboardComponent },
-  //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];
 

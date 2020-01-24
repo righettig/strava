@@ -24,7 +24,8 @@ const routes: Routes = [
     canActivate: [ActivityEditGuard],
     canDeactivate: [ActivityEditGuard],
     component: ActivityEditComponent 
-  }
+  },
+  { path: "", redirectTo: "activities", pathMatch: "full" },
 ];
 
 @NgModule({
