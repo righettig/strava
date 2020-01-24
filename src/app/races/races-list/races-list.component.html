@@ -1,13 +1,21 @@
 <div class="container">
-  <input class="form-control form-control-lg mr-2" 
-         type="text" 
-         placeholder="Find a race ..." 
-         aria-label="Find a race ..."
-         [ngModel]="query_string">
+  <input class="form-control form-control-lg mr-2" type="text" placeholder="Find a race ..."
+    aria-label="Find a race ..." [ngModel]="query_string">
 </div>
 
-<ul>
-  <li *ngFor="let r of filteredRaces">
-    {{ r.name }}
-  </li>
-</ul>
+<div class="container" style="margin-top: 20px;">
+  <div class="list-group">
+    <ng-container *ngFor="let r of filteredRaces">
+      <a class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{r.name}}</h5>
+          <small>{{r.created}}</small>
+        </div>
+        <small>
+          <a href="{{r.url}}">Visit Home Page</a>
+        </small>
+        <img class="float-right" style="width: 9%;" [src]="r.logo_url" alt="">
+      </a>
+    </ng-container>
+  </div>
+</div>
