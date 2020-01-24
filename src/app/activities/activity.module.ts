@@ -24,10 +24,7 @@ const routes: Routes = [
     canActivate: [ActivityEditGuard],
     canDeactivate: [ActivityEditGuard],
     component: ActivityEditComponent 
-  },
-  //{ path: "dashboard", component: DashboardComponent },
-  { path: "", redirectTo: "dashboard", pathMatch: "full" },
-  // { path: "**", component: PageNotFoundComponent }
+  }
 ];
 
 @NgModule({
@@ -47,7 +44,7 @@ const routes: Routes = [
   ],
   imports: [
     SharedModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   entryComponents: [
     ConfirmDeleteActivityModal,

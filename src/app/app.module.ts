@@ -8,32 +8,38 @@ import { SharedModule } from './shared/shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AnalyticsModule } from './analytics/analytics.module';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ProfileModule } from './profile/profile.module';
 import { RacesModule } from './races/races.module';
 import { ShoesModule } from './shoes/shoes.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  //{ path: "dashboard", component: DashboardComponent },
+  //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
+  { path: "**", component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
 
     SharedModule,
+
     ActivityModule,
     AuthModule,
     AnalyticsModule,
-
-    RouterModule,
-
     ProfileModule,
-
     RacesModule,
+    ShoesModule,
 
-    ShoesModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

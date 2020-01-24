@@ -1,3 +1,6 @@
+protect routes with login page
+	depending on the logged in status
+
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
@@ -9,6 +12,8 @@ lazy loading a module
 authz checks, for instances "races can only be accessed by premium users"
 	
 ==========> finish by tomorrow
+	
+shoes are not persisted, use the inmemorywebapi	
 	
 delete with confirmation dialog
 	there is a bug!
