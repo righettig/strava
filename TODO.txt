@@ -1,15 +1,20 @@
-edit
-	discard is bugged, wrong values are reset
-
-lazy loading a module
-
-authz checks, for instances "races can only be accessed by premium users"
+shows
+	FormArray, validation and auto save using observables (only if form data is valid)
 
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
 
 	PageNotFoundComponent when searching an activity that does not exist
+
+lazy loading a module
+
+authz checks, for instances "races can only be accessed by premium users"
+	
+==========> finish by tomorrow
+	
+edit
+	discard is bugged, wrong values are reset
 
 delete with confirmation dialog
 	there is a bug!

@@ -11,6 +11,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
 import { RouterModule } from '@angular/router';
 import { ProfileModule } from './profile/profile.module';
 import { RacesModule } from './races/races.module';
+import { ShoesModule } from './shoes/shoes.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { RacesModule } from './races/races.module';
 
     ProfileModule,
 
-    RacesModule
+    RacesModule,
+
+    ShoesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
