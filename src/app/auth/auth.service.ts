@@ -44,6 +44,10 @@ export class AuthService {
     this.user = new UserModel(credentials.username);
   }
 
+  get isLoggedIn() {
+    return this.user !== null;
+  }
+
   get currentUsername() {
     return this.user? this.user.username : '';
   }

@@ -3,9 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { AuthenticationGuard } from '../authentication.guard';
 
 const routes: Routes = [
-  { path: "profile", component: ProfileComponent }
+  { 
+    path: "profile",
+    canActivate: [AuthenticationGuard],
+    component: ProfileComponent 
+  }
 ];
 
 @NgModule({

@@ -1,6 +1,3 @@
-protect routes with login page
-	depending on the logged in status
-
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
