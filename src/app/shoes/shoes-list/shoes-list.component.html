@@ -42,10 +42,13 @@
 
     <div class="row">
       <div class="col-md-12">
-        <input type="submit" class="btn btn-warning btn-send" value="Save">
+        <input type="reset" class="btn btn-secondary" value="Cancel">
+        <input type="submit" class="btn btn-primary" [disabled]="!shoesForm.valid" value="Save">
       </div>
     </div>
 
   </form>
 
 </div>
+
+<a [routerLink]="['/activities']">Back</a>
