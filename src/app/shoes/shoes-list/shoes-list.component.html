@@ -3,76 +3,78 @@
   <form class="form" role="form" autocomplete="off"
     (ngSubmit)="save()" [formGroup]="shoesForm" novalidate>
 
-    <div class="controls">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="brand">Brand *</label>
-            <input id="brand"
-                   type="text" 
-                   class="form-control form-control-sm" 
-                   placeholder="Brand *"
-                   formControlName="brand"
-                   [ngClass]="{'is-invalid': brandValidationMsg}">
-            <!-- <div class="help-block with-errors"></div> -->
-            <span class="invalid-feedback">
-              <span *ngIf="brandValidationMsg">
-                <small>{{brandValidationMsg}}</small>
+    <div formArrayName="shoes" *ngFor="let shoe of shoes.controls; let i = index">
+      <div [formGroupName]="i">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label attr.for="{{brand+i}}">Brand *</label>
+              <input id="{{brand+i}}"
+                     type="text" 
+                     class="form-control form-control-sm" 
+                     placeholder="Brand *"
+                     formControlName="brand"
+                     [ngClass]="{'is-invalid': shoe.get('brand').validationMsg}">
+              <span class="invalid-feedback">
+                <small>{{shoe.get('brand').validationMsg}}</small>
               </span>
-            </span>
+            </div>
           </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="model">Model *</label>
-            <input id="model" 
-                   type="text" 
-                   class="form-control form-control-sm" 
-                   placeholder="Model *"
-                   formControlName="model"
-                   [ngClass]="{'is-invalid': modelValidationMsg}">
-            <!-- <div class="help-block with-errors"></div> -->
-            <span class="invalid-feedback">
-              <span *ngIf="modelValidationMsg">
-                <small>{{modelValidationMsg}}</small>
+  
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label attr.for="{{model+i}}">Model *</label>
+              <input id="{{model+i}}" 
+                     type="text" 
+                     class="form-control form-control-sm" 
+                     placeholder="Model *"
+                     formControlName="model"
+                     [ngClass]="{'is-invalid': shoe.get('model').validationMsg}">
+              <span class="invalid-feedback">
+                <small>{{shoe.get('model').validationMsg}}</small>
               </span>
-            </span>
+            </div>
+          </div>
+  
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label attr.for="{{nickname+i}}">Nickname</label>
+              <input id="{{nickname+i}}" 
+                     type="text" 
+                     class="form-control form-control-sm" 
+                     placeholder="Nickname"
+                     formControlName="nickname">
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label attr.for="{{notes+i}}">Notes</label>
+              <textarea id="{{notes+i}}" 
+                        class="form-control form-control-sm" 
+                        placeholder="Add additional information about your shoes (color, condition, etc)" 
+                        rows="2"
+                        formControlName="notes">
+              </textarea>
+            </div>
           </div>
         </div>
 
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="nickname">Nickname</label>
-            <input id="nickname" 
-                   type="text" 
-                   class="form-control form-control-sm" 
-                   placeholder="Nickname"
-                   formControlName="nickname">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label for="notes">Notes</label>
-            <textarea id="notes" 
-                      class="form-control form-control-sm" 
-                      placeholder="Add additional information about your shoes (color, condition, etc)" 
-                      rows="2"
-                      formControlName="notes">
-            </textarea>
-          </div>
-        </div>
+        <hr>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
+        <input type="button" class="btn btn-primary" value="Add Shoe" [disabled]="!shoes.valid" (click)="addShoe()">
         <input type="reset" class="btn btn-secondary" value="Cancel">
         <input type="submit" class="btn btn-primary" [disabled]="!shoesForm.valid" value="Save">
+        
+        <span class="auto-save float-right" *ngIf="saving">Saving ...</span>
       </div>
+      
     </div>
 
   </form>

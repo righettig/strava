@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { filter } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
+import { filter, groupBy, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shoes-list',
@@ -15,52 +15,58 @@ export class ShoesListComponent implements OnInit {
 
   ngOnInit() {
     this.shoesForm = this.fb.group({
-      brand:    ["", Validators.required],
-      model:    ["", Validators.required],
-      nickname:  "",
-      notes:     "",
+      shoes: this.fb.array([this.buildShoe()])
     });
 
-    const brandControl = this.shoesForm.get("brand");
-    brandControl.valueChanges.subscribe(value => {
-      this.validateBrand(brandControl);
-    })
+    this.shoesForm.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe((value) => {
+      if (this.shoesForm.valid) {
+        this.save();
+      }
+    });
+  }
 
-    const modelControl = this.shoesForm.get("model");
-    modelControl.valueChanges.subscribe(value => {
-      debugger;
-      this.validateModel(modelControl);
-    })
+  buildShoe(): FormGroup {
+    let group = this.fb.group({
+      brand: ["", Validators.required],
+      model: ["", Validators.required],
+      nickname: "",
+      notes: ""
+    });
 
-    // this.shoesForm.valueChanges.pipe(
-    //   filter(el => el.)
-    // )
-    //   subscribe(value => {
-    //   debugger;
-    // })
+    this.setValidation(group, "brand", "Please enter a brand");
+    this.setValidation(group, "model", "Please enter a model");
+
+    return group;
+  }
+
+  addShoe() {
+    this.shoes.push(this.buildShoe());
   }
 
   save() {
-
+    this.saving = true;
+    setTimeout(() => {
+      this.saving = false;
+    }, 800);
   }
 
-  validateBrand(c: AbstractControl) {
-    this.brandValidationMsg = "";
-    if ((c.touched || c.dirty) && !c.valid) {
-      this.brandValidationMsg = "Please enter a brand";
-    }
+  get shoes(): FormArray {
+    return <FormArray>this.shoesForm.get("shoes");
   }
 
-  validateModel(c: AbstractControl) {
-    this.modelValidationMsg = "";
-    if ((c.touched || c.dirty) && !c.valid) {
-      this.modelValidationMsg = "Please enter a model";
-    }
+  private setValidation(group, field, msg) {
+    const c = group.get(field);
+    c.valueChanges.subscribe(value => {
+      c.validationMsg = "";
+      if ((c.touched || c.dirty) && !c.valid) {
+        c.validationMsg = msg;
+      }
+    })
   }
-
-  brandValidationMsg: string; 
-  modelValidationMsg: string; 
 
   shoesForm: FormGroup;
+  saving = false;
 
 }

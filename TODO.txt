@@ -1,6 +1,3 @@
-shoes
-	FormArray, validation and auto save using observables (only if form data is valid)
-
 routing
 	different "layout" based on loggedin state
 		=> Angular Routing (Deborah Kurata) 4h:49m
