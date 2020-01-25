@@ -1,22 +1,13 @@
 import { NgModule } from '@angular/core';
-import { AnalyticsComponent } from './analytics.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
+import { AnalyticsRoutingModule } from './analytics-routing.module';
+import { AnalyticsComponent } from './analytics.component';
 
 @NgModule({
   declarations: [AnalyticsComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    AnalyticsRoutingModule,
   ]
 })
-export class AnalyticsModule { 
-
-  static routes = [
-    { 
-      path: "analytics", 
-      canActivate: [AuthenticationGuard],
-      component: AnalyticsComponent 
-    }
-  ]
-
-}
+export class AnalyticsModule { }

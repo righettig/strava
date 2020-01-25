@@ -2,23 +2,14 @@ import { NgModule } from '@angular/core';
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 @NgModule({
   declarations: [ProfileComponent],
   imports: [
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProfileRoutingModule
   ]
 })
-export class ProfileModule { 
-
-  static routes = [
-    { 
-      path: "profile",
-      canActivate: [AuthenticationGuard],
-      component: ProfileComponent 
-    }
-  ]
-
-}
+export class ProfileModule { }

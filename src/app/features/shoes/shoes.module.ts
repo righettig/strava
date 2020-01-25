@@ -1,24 +1,15 @@
 import { NgModule } from '@angular/core';
-import { ShoesListComponent } from './shoes-list/shoes-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
+import { ShoesRoutingModule } from './shoes-routing.module';
+import { ShoesListComponent } from './shoes-list/shoes-list.component';
 
 @NgModule({
   declarations: [ShoesListComponent],
   imports: [
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShoesRoutingModule
   ]
 })
-export class ShoesModule { 
-
-  static routes = [
-    { 
-      path: "shoes", 
-      canActivate: [AuthenticationGuard],
-      component: ShoesListComponent 
-    }
-  ]
-
-}
+export class ShoesModule { }
