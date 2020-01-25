@@ -34,6 +34,11 @@ const routes: Routes = [
     NavbarComponent,
     AppLayoutComponent
   ],
-  imports: [RouterModule.forRoot(routes)]
+  imports: [
+    // NB: disabling hashing requires the NotLoggedIn route guard to be changed.
+    // In fact, an hard refresh is triggered when trying to hit the 'login' or 'register' pages while
+    // being logged in. This wipes the memory and AuthService thinks the user is now logged on.
+    RouterModule.forRoot(routes, { useHash: true })
+  ]
 })
 export class AppRoutingModule { }
