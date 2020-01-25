@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from '../shared/guards/authentication.guard';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ActivityModule } from './activities/activity.module';
-import { AnalyticsModule } from './analytics/analytics.module';
-import { ProfileModule } from './profile/profile.module';
-import { RacesModule } from './races/races.module';
-import { ShoesModule } from './shoes/shoes.module';
-import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { ActivityModule } from '../features/activities/activity.module';
+import { AnalyticsModule } from '../features/analytics/analytics.module';
+import { ProfileModule } from '../features/profile/profile.module';
+import { RacesModule } from '../features/races/races.module';
+import { ShoesModule } from '../features/shoes/shoes.module';
+import { AppLayoutComponent } from './layout/app-layout.component';
 
 const routes: Routes = [
   {

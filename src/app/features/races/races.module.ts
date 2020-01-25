@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RacesListComponent } from './races-list/races-list.component';
 import { MyRacesComponent } from './my-races/my-races.component';
-import { SharedModule } from '../shared/shared.module';
-import { AuthenticationGuard } from '../authentication.guard';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
 
 @NgModule({
   declarations: [RacesListComponent, MyRacesComponent],

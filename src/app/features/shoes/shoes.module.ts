@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ShoesListComponent } from './shoes-list/shoes-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
-import { AuthenticationGuard } from '../authentication.guard';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
 
 @NgModule({
   declarations: [ShoesListComponent],

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { FiltersComponent } from './filters/filters.component';
+import { FiltersComponent } from './activity-list/filters/filters.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { ActivityEditComponent } from './activity-edit/activity-edit.component';
 import { ActivityListComponent } from './activity-list/activity-list.component';
@@ -9,8 +9,8 @@ import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { PendingChangesModal } from './pending-changes-modal/pending-changes-modal.component';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from '../authentication.guard';
+
+import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
 import { ActivityEditGuard } from './activity-edit.guard';
 
 @NgModule({

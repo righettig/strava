@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ActivityModule } from './activities/activity.module';
-import { AuthModule } from './auth/auth.module';
+
 import { SharedModule } from './shared/shared.module';
+import { ActivityModule } from './features/activities/activity.module';
+import { AuthModule } from './features/auth/auth.module';
+import { AnalyticsModule } from './features/analytics/analytics.module';
+import { ProfileModule } from './features/profile/profile.module';
+import { RacesModule } from './features/races/races.module';
+import { ShoesModule } from './features/shoes/shoes.module';
 
-import { AnalyticsModule } from './analytics/analytics.module';
-import { ProfileModule } from './profile/profile.module';
-import { RacesModule } from './races/races.module';
-import { ShoesModule } from './shoes/shoes.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { PageNotFoundComponent } from './routing/page-not-found/page-not-found.component';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AppComponent } from './app.component';
+import { AppComponent } from './root/app.component';
 
 @NgModule({
   declarations: [

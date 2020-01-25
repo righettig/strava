@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IActivity } from 'src/app/activities/models/activity';
 import { ActivitiesApiService } from '../activities-api.service';
 import { ActivitiesParamsService } from '../activities-params.service';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { IActivity } from '../models/activity';
 
 @Component({
   templateUrl: './activity-list.component.html',
