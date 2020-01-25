@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesApiService } from '../activities-api.service';
-import { ActivitiesParamsService } from '../activities-params.service';
+import { ActivitiesApiService } from '../services/activities-api.service';
+import { ActivitiesParamsService } from '../services/activities-params.service';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 

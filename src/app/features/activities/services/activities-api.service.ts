@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { IActivity } from './models/activity';
+import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
 

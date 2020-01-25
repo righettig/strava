@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ActivityEditComponent } from './activity-edit/activity-edit.component';
-import { ActivityNewComponent } from './activity-new/activity-new.component';
+import { ActivityEditComponent } from '../activity-edit/activity-edit.component';
+import { ActivityNewComponent } from '../activity-new/activity-new.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PendingChangesModal } from './pending-changes-modal/pending-changes-modal.component';
 

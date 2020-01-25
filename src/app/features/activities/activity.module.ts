@@ -9,7 +9,7 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
-import { PendingChangesModal } from './pending-changes-modal/pending-changes-modal.component';
+import { PendingChangesModal } from './guards/pending-changes-modal/pending-changes-modal.component';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivitiesApiService } from '../activities-api.service';
+import { ActivitiesApiService } from '../services/activities-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IActivity } from '../models/activity';
 import { NgForm } from '@angular/forms';

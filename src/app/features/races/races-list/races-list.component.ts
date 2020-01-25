@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { tap, debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
 import { NgModel } from '@angular/forms';
-import { RacesApiService } from '../races-api.service';
+import { RacesApiService } from '../services/races-api.service';
 
 @Component({
   templateUrl: './races-list.component.html',

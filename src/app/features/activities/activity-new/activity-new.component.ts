@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActivitiesApiService } from '../activities-api.service';
+import { ActivitiesApiService } from '../services/activities-api.service';
 import { NgForm } from '@angular/forms';
 
 @Component({

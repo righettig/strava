@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IActivity } from '../models/activity';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
-import { faRunning, faHiking, faBicycle } from '@fortawesome/free-solid-svg-icons';
-import { ActivitiesApiService } from '../activities-api.service';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { faRunning, faHiking, faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { IActivity } from '../models/activity';
+import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
+import { ActivitiesApiService } from '../services/activities-api.service';
 
 @Component({
   selector: 'app-activity-details',

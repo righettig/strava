@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { ActivityEditComponent } from './activity-edit/activity-edit.component';
-import { ActivityEditGuard } from './activity-edit.guard';
+import { ActivityEditGuard } from './guards/activity-edit.guard';
 
 const routes: Routes = [
   {

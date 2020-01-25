@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProfile, Profile } from './models/profile';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { ProfileApiService } from './profile-api.service';
+import { ProfileApiService } from './services/profile-api.service';
 
 @Component({
   templateUrl: './profile.component.html',
