@@ -13,8 +13,9 @@ export class AuthService {
   login(credentials: ILoginModel): Promise<boolean> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.setUser(credentials);
-
+        this.setUser(
+          credentials, credentials.username === "premium");
+          
         resolve(true);
       }, 1000)
     })
@@ -33,15 +34,16 @@ export class AuthService {
   register(credentials: IRegisterModel) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.setUser(credentials);
+        this.setUser(
+          credentials, credentials.username === "premium");
 
         resolve(true);
       }, 1000)
     })
   }
 
-  private setUser(credentials) {
-    this.user = new UserModel(credentials.username);
+  private setUser(credentials, isPremium) {
+    this.user = new UserModel(credentials.username, isPremium);
   }
 
   get isLoggedIn() {

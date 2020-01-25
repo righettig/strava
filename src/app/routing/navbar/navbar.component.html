@@ -13,12 +13,18 @@
         <a class="nav-link" routerLink="/shoes" routerLinkActive="active">Shoes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/races" routerLinkActive="active">Races</a>
+        <a class="nav-link" routerLink="/races" routerLinkActive="active" 
+           title="{{isPremium ? '' : 'Feature is only available for Premium users'}}"
+           [ngClass]="{'disabled': !isPremium}">Races</a>
+      </li>
+      <li class="nav-item" *ngIf="!isPremium">
+        <a class="nav-link" style="color: chartreuse;" routerLink="/upgrade">Go Premium</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" routerLink="/races/user" routerLinkActive="active">My Races</a>
       </li> -->
     </ul>
+    <fa-icon [icon]="faUserShield" *ngIf="isPremium"></fa-icon>
     <a class="username" routerLink="/profile">{{currentUsername}}</a>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">
       Logout

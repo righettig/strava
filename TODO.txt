@@ -1,7 +1,5 @@
-authz checks, for instances "races can only be accessed by premium users"
-	
-==========> finish by tomorrow
-	
+Known issues & todo
+-------------------
 shoes are not persisted, use the inmemorywebapi	
 	
 delete with confirmation dialog

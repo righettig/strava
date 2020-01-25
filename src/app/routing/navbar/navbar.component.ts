@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/features/auth/auth.service';
+import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   constructor(
     private auth: AuthService,
     private router: Router) { }
-
-  ngOnInit() {
-  }
 
   logout() {
     this.auth.logout().then(result => {
@@ -25,5 +23,11 @@ export class NavbarComponent implements OnInit {
   get currentUsername() {
     return this.auth.currentUsername;
   }
+
+  get isPremium() {
+    return this.auth.user.isPremium;
+  }
+  
+  faUserShield = faUserShield;
 
 }
