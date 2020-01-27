@@ -56,4 +56,6 @@ export class AuthService {
 
   user: IUserModel;
 
+  redirectUrl: string;
+
 }

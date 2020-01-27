@@ -17,10 +17,14 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.auth.isLoggedIn) {
       return true;
+    } 
 
-    } else {
-      this.router.navigate(['/login']);
+    if (state.url !== "/") {
+      this.auth.redirectUrl = state.url;
     }
+    
+    this.router.navigate(['/login']);
+    return false;
   }
   
 }

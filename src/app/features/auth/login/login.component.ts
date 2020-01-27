@@ -20,7 +20,11 @@ export class LoginComponent {
     }
     
     this.auth.login(model).then(result => {
-      this.router.navigate(["activities"]);
+      if (this.auth.redirectUrl) {
+        this.router.navigate([this.auth.redirectUrl]);
+      } else {
+        this.router.navigate(["activities"]);      
+      }
     })
   }
 
