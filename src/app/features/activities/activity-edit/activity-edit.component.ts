@@ -22,8 +22,8 @@ export class ActivityEditComponent implements OnInit {
     const activityId = +this.route.snapshot.paramMap.get("id");
 
     this.activitiesApi.getActivity(activityId).subscribe(data => {
-      this.activity = Object.assign({}, data); // cloning the returned activity
-      this.activity_backup = Object.assign({}, this.activity);
+      this.activity = { ...data }; // cloning the returned activity
+      this.activity_backup = { ...this.activity };
     });
   }
 
