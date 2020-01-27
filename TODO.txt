@@ -1,10 +1,11 @@
 Known issues & todo
 -------------------
-RouteResolver
-	shoes + error handling and bootstrap alerts
-	
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
+
+- another premium feature
+	guard that redirects to a page to upgrade subcrptions
+	when OK, redirect to the page we clicked before AFTER AuthService.premium is updated
 
 shoes are not persisted, use the inmemorywebapi	
 	

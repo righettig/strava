@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { tap, debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
 import { NgModel } from '@angular/forms';
 import { RacesApiService } from '../services/races-api.service';
+import { ActivatedRoute } from '@angular/router';
+import { IResolvedRaces } from '../models/race';
 
 @Component({
   templateUrl: './races-list.component.html',
@@ -12,13 +14,23 @@ export class RacesListComponent implements OnInit {
   @ViewChild(NgModel, { static: true } ) public query: NgModel;
 
   constructor(
-    private racesApi: RacesApiService) { }
+    private route: ActivatedRoute,
+
+    // not needed is using a resolver
+    /*private racesApi: RacesApiService*/) { }
 
   ngOnInit() {
-    this.racesApi.getRaces().subscribe((data: any) => {
-      this.races = data.races.map(el => el.race);
-      this.filteredRaces = this.races;
-    })
+    const resolvedData: IResolvedRaces = this.route.snapshot.data['resolvedData'];
+    this.errorMessage = resolvedData.error;
+    
+    this.races = resolvedData.races;
+    this.filteredRaces = this.races;
+    
+    // NB: if not using a resolver
+    // this.racesApi.getRaces().subscribe((data: any) => {
+    //   this.races = data;
+    //   this.filteredRaces = this.races;
+    // })
   }
 
   ngAfterViewInit() {
@@ -40,6 +52,8 @@ export class RacesListComponent implements OnInit {
 
   filteredRaces;
   races;
+
+  errorMessage: string;
 
   // for AOT to work fine
   query_string: string;
