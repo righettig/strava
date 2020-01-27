@@ -22,10 +22,6 @@ import { PendingChangesModal } from './guards/pending-changes-modal/pending-chan
     ConfirmDeleteActivityModal,
     PendingChangesModal
   ],
-  exports: [
-    ActivityListComponent,
-    UserStatsComponent
-  ],
   imports: [
     SharedModule,
     ActivityRoutingModule,
