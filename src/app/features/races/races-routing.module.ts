@@ -5,7 +5,8 @@ import { MyRacesComponent } from './my-races/my-races.component';
 
 const routes: Routes = [
   { 
-    path: "races",      
+    path: "races",
+    data: { skipPreload: true },
     children: [
       {
         path: "",
