@@ -28,4 +28,10 @@ export class ActivityNewComponent {
     return this.formGroup.dirty
   }
 
+  // for AOT to work fine
+  name: string;
+  description: string;
+  category: string;
+  subcategory: string;
+
 }

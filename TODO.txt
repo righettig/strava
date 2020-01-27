@@ -3,15 +3,12 @@ Known issues & todo
 RouteResolver
 	shoes + error handling and bootstrap alerts
 	
-- use async import to improve lazy loading 
 - pre-load lazy modules
 
 - set redirectUrl when doing login, so that I can be redirected back after I successfully logged in
 
-
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
-
-Loader for Races
+	Loader for Races
 
 shoes are not persisted, use the inmemorywebapi	
 	

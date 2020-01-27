@@ -26,4 +26,10 @@ export class RegisterComponent {
 
   faStrava = faStrava;
 
+  // for AOT to work fine
+  username: string;
+  password: string;
+  confirmPassword: string;
+  rememberMe: string;
+
 }

@@ -26,4 +26,9 @@ export class LoginComponent {
 
   faStrava = faStrava;
 
+  // for AOT to work fine
+  username: string;
+  password: string;
+  rememberMe: string;
+
 }

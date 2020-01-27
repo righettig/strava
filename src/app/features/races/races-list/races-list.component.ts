@@ -41,4 +41,7 @@ export class RacesListComponent implements OnInit {
   filteredRaces;
   races;
 
+  // for AOT to work fine
+  query_string: string;
+
 }

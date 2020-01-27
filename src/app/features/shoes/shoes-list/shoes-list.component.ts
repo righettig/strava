@@ -68,4 +68,10 @@ export class ShoesListComponent implements OnInit {
   shoesForm: FormGroup;
   saving = false;
 
+  // for AOT to work fine
+  brand: string;
+  model: string;
+  nickname: string;
+  notes: string;
+
 }
