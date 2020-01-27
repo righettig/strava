@@ -17,14 +17,14 @@ const routes: Routes = [
 
     // feature modules are lazy-loaded
     children: [
-      { path: '', loadChildren: '../features/activities/activity.module#ActivityModule' },
-      { path: '', loadChildren: '../features/analytics/analytics.module#AnalyticsModule' },
-      { path: '', loadChildren: '../features/profile/profile.module#ProfileModule' },
-      { path: '', loadChildren: '../features/shoes/shoes.module#ShoesModule' },
+      { path: '', loadChildren: () => import('../features/analytics/analytics.module').then(m => m.AnalyticsModule) },
+      { path: '', loadChildren: () => import('../features/analytics/analytics.module').then(m => m.AnalyticsModule) },
+      { path: '', loadChildren: () => import('../features/profile/profile.module').then(m => m.ProfileModule) },
+      { path: '', loadChildren: () => import('../features/shoes/shoes.module').then(m => m.ShoesModule) },
       { 
         path: '', 
         canLoad: [PremiumUserGuard],
-        loadChildren: '../features/races/races.module#RacesModule' 
+        loadChildren: () => import('../features/races/races.module').then(m => m.RacesModule) 
       }
     ]
   },
