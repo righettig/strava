@@ -19,7 +19,7 @@ export class ActivityEditGuard
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let id = +next.url[1].path;
+    let id = +next.params.id;
     if (isNaN(id) || id < 1) {
       alert('Invalid activity Id');
       this.router.navigate(['/activities']);

@@ -6,11 +6,16 @@ import { MyRacesComponent } from './my-races/my-races.component';
 const routes: Routes = [
   { 
     path: "races",      
-    component: RacesListComponent 
-  },
-  { 
-    path: "races/user", 
-    component: MyRacesComponent 
+    children: [
+      {
+        path: "",
+        component: RacesListComponent 
+      },
+      { 
+        path: "user", 
+        component: MyRacesComponent 
+      }
+    ]
   }
 ]
 

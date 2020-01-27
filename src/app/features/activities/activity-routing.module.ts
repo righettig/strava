@@ -9,18 +9,23 @@ import { ActivityEditGuard } from './guards/activity-edit.guard';
 const routes: Routes = [
   {
     path: "activities",
-    component: ActivityListComponent
-  },
-  {
-    path: "activities/create",
-    canDeactivate: [ActivityEditGuard],
-    component: ActivityNewComponent
-  },
-  {
-    path: "activities/:id",
-    canActivate: [ActivityEditGuard],
-    canDeactivate: [ActivityEditGuard],
-    component: ActivityEditComponent
+    children: [
+      {
+        path: "",
+        component: ActivityListComponent
+      },
+      {
+        path: "create",
+        canDeactivate: [ActivityEditGuard],
+        component: ActivityNewComponent
+      },
+      {
+        path: ":id",
+        canActivate: [ActivityEditGuard],
+        canDeactivate: [ActivityEditGuard],
+        component: ActivityEditComponent
+      }
+    ]
   }
 ]
 
