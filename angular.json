@@ -128,6 +128,41 @@
           }
         }
       }
+    },
+    "strava-shared": {
+      "projectType": "library",
+      "root": "projects/strava-shared",
+      "sourceRoot": "projects/strava-shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/strava-shared/tsconfig.lib.json",
+            "project": "projects/strava-shared/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/strava-shared/src/test.ts",
+            "tsConfig": "projects/strava-shared/tsconfig.spec.json",
+            "karmaConfig": "projects/strava-shared/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/strava-shared/tsconfig.lib.json",
+              "projects/strava-shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "strava"
 }

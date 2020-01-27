@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "strava-shared": [
+        "dist/strava-shared"
+      ],
+      "strava-shared/*": [
+        "dist/strava-shared/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
