@@ -2,17 +2,6 @@ Known issues & todo
 -------------------
 - deal with F5 refreshes
 
-- filter service class
-	filterByCategory(data, category) {
-		let result = data; // all
-
-		if (category !== "all") {
-		  result = data.filter(el => el.category === category);
-		}
-
-		return result;
-	}
-
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
 

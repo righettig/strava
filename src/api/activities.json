@@ -5,7 +5,8 @@
     "description": "20M longrun",
     "creationDate": "January 20, 2020",
     "category": "run",
-    "subcategory": "longrun"
+    "subcategory": "longrun",
+    "kudos": 2
   },
   {
     "id": 2,
@@ -13,13 +14,15 @@
     "description": "4 x 1M threshold intervals, 90 sec rest",
     "creationDate": "January 21, 2020",
     "category": "run",
-    "subcategory": "workout"
+    "subcategory": "workout",
+    "kudos": 11
   },
   {
     "id": 3,
     "name": "Mount Blanc Hike",
     "description": "Wonderful day out on the trails of Chamonix",
     "creationDate": "December 21, 2019",
-    "category": "hike"
+    "category": "hike",
+    "kudos": 0
   }
 ]

@@ -4,18 +4,50 @@ import { Observable, throwError, of } from 'rxjs';
 import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
+
+declare const Pusher: any;
 
 const localUrl = 'api/activities.json';
 const TIMEOUT = 5000;
+
+interface IKudosReply {
+  activityId: string;
+  kudos: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivitiesApiService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    const pusher = new Pusher(environment.pusher.key, {
+      cluster: environment.pusher.cluster,
+      forceTLS: true
+    });
+
+    const channel = pusher.subscribe('events-channel');
+    
+    channel.bind('new-like', (data: IKudosReply) => {     
+      this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
+    });
+  }
 
   activities: IActivity[]; // in-memory cache
+
+  giveKudos(activity: IActivity) {
+    activity.kudos++;   
+
+    this.http.post('http://localhost:3120/update', 
+      {
+        activityId: activity.id, 
+        kudos: activity.kudos 
+      });
+  }
 
   getActivities(): Observable<IActivity[]> {
     if (this.activities) {
@@ -48,7 +80,7 @@ export class ActivitiesApiService {
   deleteActivity(activityId: number): Observable<boolean> {
     if (this.activities) {
       const index = this.activities.findIndex(a => a.id == activityId);
-      
+
       if (index > -1) {
         this.activities.splice(index, 1);
         return of(true);
@@ -56,7 +88,7 @@ export class ActivitiesApiService {
       } else {
         return of(false);
       }
-     
+
     } else {
       return of(false);
     }
@@ -65,11 +97,12 @@ export class ActivitiesApiService {
   insertActivity(activity: IActivity): Observable<number> {
     activity.id = this.activities.length;
     activity.creationDate = new Date().toLocaleDateString();
+    activity.kudos = 0;
 
     switch (activity.category) {
       case "run":  activity.icon = faRunning; break;
       case "ride": activity.icon = faBicycle; break;
-      case "hike": activity.icon = faHiking;  break;
+      case "hike": activity.icon = faHiking; break;
     }
 
     this.activities.push(activity);
@@ -80,7 +113,7 @@ export class ActivitiesApiService {
   editActivity(activity: IActivity): Observable<boolean> {
     if (this.activities) {
       const index = this.activities.findIndex(a => a.id == activity.id);
-      
+
       if (index > -1) {
         this.activities.splice(index, 1);
         this.activities.push(activity);
@@ -89,7 +122,7 @@ export class ActivitiesApiService {
       } else {
         return of(false);
       }
-     
+
     } else {
       return of(false);
     }

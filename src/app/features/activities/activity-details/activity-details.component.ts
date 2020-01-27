@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { faRunning, faHiking, faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { faRunning, faHiking, faBicycle, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { ActivitiesApiService } from '../services/activities-api.service';
@@ -38,5 +38,11 @@ export class ActivityDetailsComponent implements OnInit {
       });
     })
   }
+
+  giveKudos(activity) {
+    this.activitiesApi.giveKudos(activity);
+  }
+
+  faThumbsUp = faThumbsUp;
 
 }

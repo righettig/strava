@@ -8,4 +8,5 @@ export interface IActivity {
   category: string;
   subcategory: string;
   icon: IconDefinition;
+  kudos: number;
 }

@@ -7,6 +7,13 @@
       Edit
     </a>
     <button (click)="delete(activity)">Delete</button>
+
+    <!-- TODO: you should only be allowed to give at most one like per-activity -->
+    <button (click)="giveKudos(activity)">
+      <fa-icon [icon]="faThumbsUp"></fa-icon>
+    </button>
+    <span *ngIf="activity.kudos">{{ activity.kudos }}</span>
+
   </div>
   <div class="card-body">
     {{activity.description}}
