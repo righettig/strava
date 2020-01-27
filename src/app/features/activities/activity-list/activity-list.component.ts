@@ -44,14 +44,19 @@ export class ActivityListComponent implements OnInit {
   }
 
   filterActivities() {
-    if (this.filterBy === "all") {
-      this.filteredActivities = this.activities;
-      
-    } else {
-      this.filteredActivities = 
-        this.activities.filter(el => el.category === this.filterBy);
-    }
+    this.filteredActivities = this.filterByCategory(this.activities, this.filterBy);
   }
+
+  // consider extracting this to a separate service which can also deal with sorting if needed
+  private filterByCategory(data: IActivity[], category: string) {
+		let result = data; // all
+
+		if (category !== "all") {
+		  result = data.filter(el => el.category === category);
+		}
+
+		return result;
+	}
 
   dismissError() {
     this.errorMessage = "";

@@ -1,11 +1,28 @@
 Known issues & todo
 -------------------
+- deal with F5 refreshes
+
+- filter service class
+	filterByCategory(data, category) {
+		let result = data; // all
+
+		if (category !== "all") {
+		  result = data.filter(el => el.category === category);
+		}
+
+		return result;
+	}
+
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
 
 - another premium feature
 	guard that redirects to a page to upgrade subcrptions
 	when OK, redirect to the page we clicked before AFTER AuthService.premium is updated
+
+- docker
+	devo verificare di poter eseguire docker (non ho windows 10 pro)
+		devo controllare anche per la virtualizzazione
 
 shoes are not persisted, use the inmemorywebapi	
 	
