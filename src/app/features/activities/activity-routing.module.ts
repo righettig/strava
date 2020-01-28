@@ -7,6 +7,11 @@ import { ActivityEditComponent } from './activity-edit/activity-edit.component';
 import { ActivityEditGuard } from './guards/activity-edit.guard';
 
 const routes: Routes = [
+  { // default route
+    path: '',
+    redirectTo: '/activities',
+    pathMatch: 'full'
+  },
   {
     path: "activities",
     children: [
