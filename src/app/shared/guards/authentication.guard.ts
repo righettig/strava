@@ -15,9 +15,16 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+    // the user is currently logged in
     if (this.auth.isLoggedIn) {
       return true;
-    } 
+    }
+
+    // the user is currently not logged in but we he has a valid auth token
+    if (this.auth.reconnect()) {
+      return true;
+    }
 
     if (state.url !== "/") {
       this.auth.redirectUrl = state.url;

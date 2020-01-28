@@ -1,7 +1,5 @@
 Known issues & todo
 -------------------
-- deal with F5 refreshes
-
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
 
