@@ -4,6 +4,7 @@ import { faRunning, faHiking, faBicycle, faThumbsUp } from '@fortawesome/free-so
 import { IActivity } from '../models/activity';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { ActivitiesApiService } from '../services/activities-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activity-details',
@@ -17,6 +18,7 @@ export class ActivityDetailsComponent implements OnInit {
   @Output() onDelete = new EventEmitter()
 
   constructor(
+    private router: Router,
     private modalService: NgbModal,
     private activitiesApi: ActivitiesApiService) { }
 
@@ -36,6 +38,10 @@ export class ActivityDetailsComponent implements OnInit {
       this.activitiesApi.deleteActivity(activity.id);
       this.onDelete.emit();
     })
+  }
+
+  edit(activity: IActivity) {
+    this.router.navigate(['/activities', activity.id])
   }
 
   giveKudos(activity) {

@@ -2,19 +2,20 @@
   <div class="card-header">
     <fa-icon [icon]="activity.icon"></fa-icon>
     {{activity.name}}
-    <small>{{activity.creationDate}}</small>
-    {{activity.distance}}
-    <a [routerLink]="['/activities', activity.id]">
-      Edit
-    </a>
-    <button (click)="delete(activity)">Delete</button>
+    <small>{{activity.creationDate | date:'medium'}}</small>
+    {{activity.distance}} km   
 
-    <!-- TODO: you should only be allowed to give at most one like per-activity -->
-    <button (click)="giveKudos(activity)">
-      <fa-icon [icon]="faThumbsUp"></fa-icon>
-    </button>
-    <span *ngIf="activity.kudos">{{ activity.kudos }}</span>
+    <div class="btn-group btn-group-sm float-right" role="group">
+      <button type="button" class="btn btn-secondary" (click)="edit(activity)">Edit</button>
+      
+      <button type="button" class="btn btn-danger" (click)="delete(activity)">Delete</button>
 
+      <!-- TODO: you should only be allowed to give at most one like per-activity -->
+      <button type="button" class="btn btn-default" (click)="giveKudos(activity)">
+        <fa-icon [icon]="faThumbsUp"></fa-icon>
+        <span *ngIf="activity.kudos"> {{ activity.kudos }}</span>
+      </button>
+    </div>
   </div>
   <div class="card-body">
     {{activity.description}}
