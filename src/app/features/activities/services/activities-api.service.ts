@@ -46,6 +46,7 @@ export class ActivitiesApiService {
 
     } else {
       return this.http.get<IActivity[]>(localUrl).pipe(
+        tap(data => data.forEach(el => el.creationDate = new Date(el.creationDate))),
         tap(data => this.activities = this.cloner.deepClone<IActivity[]>(data)),
         tap(data => console.log("getActivities: " + JSON.stringify(data))),
         timeout(TIMEOUT),
@@ -88,7 +89,7 @@ export class ActivitiesApiService {
 
   insertActivity(activity: IActivity): Observable<number> {
     activity.id = this.activities.length;
-    activity.creationDate = new Date().toLocaleDateString();
+    activity.creationDate = new Date();
     activity.kudos = 0;
 
     switch (activity.category) {

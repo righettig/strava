@@ -3,6 +3,7 @@ import { ActivitiesApiService } from '../services/activities-api.service';
 import { ActivitiesParamsService } from '../services/activities-params.service';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
+import { ActivitiesFilterService } from '../services/activities-filter.service';
 
 @Component({
   templateUrl: './activity-list.component.html',
@@ -12,6 +13,7 @@ export class ActivityListComponent implements OnInit {
 
   constructor(
     private activitiesApi: ActivitiesApiService,
+    private activitiesFilter: ActivitiesFilterService,
     private params: ActivitiesParamsService) { 
   }
 
@@ -33,6 +35,8 @@ export class ActivityListComponent implements OnInit {
         next: data => {
           this.activities = data;
           this.filterActivities();
+          this.currentWeekTotalDistance = 
+            this.activitiesFilter.currentWeekTotalDistance(this.activities);
         },
         error: err => this.errorMessage = err
       });
@@ -44,27 +48,15 @@ export class ActivityListComponent implements OnInit {
   }
 
   filterActivities() {
-    this.filteredActivities = this.filterByCategory(this.activities, this.filterBy);
+    this.filteredActivities = 
+      this.activitiesFilter.filterByCategory(this.activities, this.filterBy);
   }
-
-  // consider extracting this to a separate service which can also deal with sorting if needed
-  private filterByCategory(data: IActivity[], category: string) {
-		let result = data; // all
-
-		if (category !== "all") {
-		  result = data.filter(el => el.category === category);
-		}
-
-		return result;
-	}
 
   dismissError() {
     this.errorMessage = "";
   }
 
-  get totalDistance() {
-    return this.activities.reduce((curr, el) => curr + el.distance, 0);
-  }
+  currentWeekTotalDistance: number;
 
   faPlusSquare = faPlusSquare;
 
