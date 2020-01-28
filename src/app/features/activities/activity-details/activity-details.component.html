@@ -3,6 +3,7 @@
     <fa-icon [icon]="activity.icon"></fa-icon>
     {{activity.name}}
     <small>{{activity.creationDate}}</small>
+    {{activity.distance}}
     <a [routerLink]="['/activities', activity.id]">
       Edit
     </a>

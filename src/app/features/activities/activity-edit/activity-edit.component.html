@@ -50,6 +50,15 @@
            [(ngModel)]="activity.subcategory">
   </div>
 
+  <div class="form-group">
+    <label for="distance">Distance</label>
+    <input type="number" 
+           id="distance" 
+           name="distance"
+           class="form-control"
+           [(ngModel)]="activity.distance">
+  </div>
+
   <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
     Save
   </button>

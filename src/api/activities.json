@@ -6,6 +6,7 @@
     "creationDate": "January 20, 2020",
     "category": "run",
     "subcategory": "longrun",
+    "distance": 20,
     "kudos": 2
   },
   {
@@ -15,6 +16,7 @@
     "creationDate": "January 21, 2020",
     "category": "run",
     "subcategory": "workout",
+    "distance": 4,
     "kudos": 11
   },
   {
@@ -23,6 +25,7 @@
     "description": "Wonderful day out on the trails of Chamonix",
     "creationDate": "December 21, 2019",
     "category": "hike",
+    "distance": 30,
     "kudos": 0
   }
 ]

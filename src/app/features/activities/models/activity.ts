@@ -5,6 +5,7 @@ export interface IActivity {
   name: string;
   description: string;
   creationDate: string; // Date;
+  distance: number;
   category: string;
   subcategory: string;
   icon: IconDefinition;

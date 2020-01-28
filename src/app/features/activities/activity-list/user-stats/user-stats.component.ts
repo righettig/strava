@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-stats',
@@ -6,11 +7,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./user-stats.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserStatsComponent implements OnInit {
+export class UserStatsComponent {
 
-  constructor() { }
+  @Input() totalDistance: number
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  goToFullAnalytics() {
+    this.router.navigate(['analytics']);
   }
 
 }

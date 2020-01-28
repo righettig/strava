@@ -62,6 +62,10 @@ export class ActivityListComponent implements OnInit {
     this.errorMessage = "";
   }
 
+  get totalDistance() {
+    return this.activities.reduce((curr, el) => curr + el.distance, 0);
+  }
+
   faPlusSquare = faPlusSquare;
 
   errorMessage: string;

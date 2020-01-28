@@ -34,5 +34,6 @@ export class ActivityNewComponent {
   description: string;
   category: string;
   subcategory: string;
+  distance: number;
 
 }

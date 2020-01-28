@@ -1,5 +1,5 @@
 <div class="row">
-  <app-user-stats></app-user-stats>
+  <app-user-stats [totalDistance]="totalDistance"></app-user-stats>
 </div>
 
 <div class="row">
@@ -22,5 +22,5 @@
     <app-activity-details [activity]="activity" (onDelete)="getActivities()"></app-activity-details>
   </ng-container>
 
-  <div *ngIf="!filterActivities.length">No data</div>
+  <div *ngIf="filteredActivities?.length == 0">No data</div>
 </div>
