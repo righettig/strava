@@ -51,6 +51,10 @@ export class ShoesListComponent implements OnInit {
     }, 800);
   }
 
+  validationMsg(c: AbstractControl, field: string) {
+    return (<any>c.get(field)).validationMsg;
+  }
+
   get shoes(): FormArray {
     return <FormArray>this.shoesForm.get("shoes");
   }

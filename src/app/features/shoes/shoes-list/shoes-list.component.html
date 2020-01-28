@@ -14,9 +14,9 @@
                      class="form-control form-control-sm" 
                      placeholder="Brand *"
                      formControlName="brand"
-                     [ngClass]="{'is-invalid': shoe.get('brand').validationMsg}">
+                     [ngClass]="{'is-invalid': validationMsg(shoe, 'brand')}">
               <span class="invalid-feedback">
-                <small>{{shoe.get('brand').validationMsg}}</small>
+                <small>{{validationMsg(shoe, 'brand')}}</small>
               </span>
             </div>
           </div>
@@ -29,9 +29,9 @@
                      class="form-control form-control-sm" 
                      placeholder="Model *"
                      formControlName="model"
-                     [ngClass]="{'is-invalid': shoe.get('model').validationMsg}">
+                     [ngClass]="{'is-invalid': validationMsg(shoe, 'model')}">
               <span class="invalid-feedback">
-                <small>{{shoe.get('model').validationMsg}}</small>
+                <small>{{validationMsg(shoe, 'model')}}</small>
               </span>
             </div>
           </div>
