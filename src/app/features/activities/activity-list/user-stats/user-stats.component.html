@@ -1,11 +1,12 @@
 <div class="jumbotron">
   <h1>Your weekly stats</h1>
-  <p class="lead" *ngIf="!totalDistance">
-    There is not enough data yet. Enter at least one activity!
-  </p>
-  <p class="lead" *ngIf="totalDistance">
-    {{totalDistance}}
-  </p>
+  <p class="lead">
+    {{ 
+      totalDistance ? 
+        "Total distance: " + totalDistance + "km" : 
+        'There is not enough data yet. Enter at least one activity!' 
+    }}
+  </p>  
   <button class="btn btn-lg btn-primary" [disabled]="!totalDistance" (click)="goToFullAnalytics()">
     See full analytics
   </button>
