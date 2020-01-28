@@ -8,8 +8,8 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group">
-              <label attr.for="{{brand+i}}">Brand *</label>
-              <input id="{{brand+i}}"
+              <label [attr.for]="'brand'+i">Brand *</label>
+              <input [attr.id]="'brand'+i"
                      type="text" 
                      class="form-control form-control-sm" 
                      placeholder="Brand *"
@@ -23,8 +23,8 @@
   
           <div class="col-sm-4">
             <div class="form-group">
-              <label attr.for="{{model+i}}">Model *</label>
-              <input id="{{model+i}}" 
+              <label [attr.for]="'model'+i">Model *</label>
+              <input [attr.id]="'model'+i" 
                      type="text" 
                      class="form-control form-control-sm" 
                      placeholder="Model *"
@@ -38,8 +38,8 @@
   
           <div class="col-sm-4">
             <div class="form-group">
-              <label attr.for="{{nickname+i}}">Nickname</label>
-              <input id="{{nickname+i}}" 
+              <label [attr.for]="'nickname'+i">Nickname</label>
+              <input [attr.id]="'nickname'+i" 
                      type="text" 
                      class="form-control form-control-sm" 
                      placeholder="Nickname"
@@ -51,8 +51,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label attr.for="{{notes+i}}">Notes</label>
-              <textarea id="{{notes+i}}" 
+              <label [attr.for]="'notes'+i">Notes</label>
+              <textarea [attr.id]="'notes+i'" 
                         class="form-control form-control-sm" 
                         placeholder="Add additional information about your shoes (color, condition, etc)" 
                         rows="2"
