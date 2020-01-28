@@ -19,6 +19,8 @@ Known issues & todo
 	devo verificare di poter eseguire docker (non ho windows 10 pro)
 		devo controllare anche per la virtualizzazione
 
+activities/new SAVE btn is enabled even though form.name is empty
+
 shoes are not persisted, use the inmemorywebapi	
 	
 PendingChangesModal no longer displays
