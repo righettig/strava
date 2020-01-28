@@ -18,6 +18,6 @@
     </ngb-alert>
   </p>
   <ng-container *ngFor="let activity of filteredActivities">
-    <app-activity-details [activity]="activity"></app-activity-details>
+    <app-activity-details [activity]="activity" (onDelete)="getActivities()"></app-activity-details>
   </ng-container>
 </div>

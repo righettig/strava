@@ -5,6 +5,7 @@ import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
+import { ClonerService } from 'strava-shared';
 
 declare const Pusher: any;
 
@@ -21,20 +22,10 @@ interface IKudosReply {
 })
 export class ActivitiesApiService {
 
-    constructor(private http: HttpClient) { 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    const pusher = new Pusher(environment.pusher.key, {
-      cluster: environment.pusher.cluster,
-      forceTLS: true
-    });
-
-    const channel = pusher.subscribe('events-channel');
-    
-    channel.bind('new-like', (data: IKudosReply) => {     
-      this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
-    });
+  constructor(
+    private http: HttpClient, 
+    private cloner: ClonerService) { 
+      this.initPusher();
   }
 
   activities: IActivity[]; // in-memory cache
@@ -51,11 +42,11 @@ export class ActivitiesApiService {
 
   getActivities(): Observable<IActivity[]> {
     if (this.activities) {
-      return of(this.activities);
+      return of(this.cloner.deepClone<IActivity[]>(this.activities));
 
     } else {
       return this.http.get<IActivity[]>(localUrl).pipe(
-        tap(data => this.activities = data),
+        tap(data => this.activities = this.cloner.deepClone<IActivity[]>(data)),
         tap(data => console.log("getActivities: " + JSON.stringify(data))),
         timeout(TIMEOUT),
         catchError(this.handleError)
@@ -65,11 +56,12 @@ export class ActivitiesApiService {
 
   getActivity(activityId: number): Observable<IActivity> {
     if (this.activities) {
-      return of(this.activities.find(a => a.id == activityId));
+      const activity = this.activities.find(a => a.id == activityId);
+      return of(this.cloner.deepClone<IActivity>(activity));
 
     } else {
       return this.http.get<IActivity[]>(localUrl).pipe(
-        map(data => data.find(a => a.id == activityId)),
+        map(data => this.cloner.deepClone<IActivity>(data.find(a => a.id == activityId))),
         tap(data => console.log('getActivity: ' + JSON.stringify(data))),
         timeout(TIMEOUT),
         catchError(this.handleError)
@@ -116,7 +108,7 @@ export class ActivitiesApiService {
 
       if (index > -1) {
         this.activities.splice(index, 1);
-        this.activities.push(activity);
+        this.activities.push(this.cloner.deepClone<IActivity>(activity));
         return of(true);
 
       } else {
@@ -142,6 +134,22 @@ export class ActivitiesApiService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+
+  private initPusher() {
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    const pusher = new Pusher(environment.pusher.key, {
+      cluster: environment.pusher.cluster,
+      forceTLS: true
+    });
+
+    const channel = pusher.subscribe('events-channel');
+    
+    channel.bind('new-like', (data: IKudosReply) => {     
+      this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
+    });
   }
 
 }

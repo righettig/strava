@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivitiesApiService } from '../services/activities-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IActivity } from '../models/activity';
@@ -6,8 +6,7 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './activity-edit.component.html',
-  styleUrls: ['./activity-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./activity-edit.component.scss']
 })
 export class ActivityEditComponent implements OnInit {
 

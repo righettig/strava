@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faRunning, faHiking, faBicycle, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { ActivitiesApiService } from '../services/activities-api.service';
-import { PendingChangesModal } from '../guards/pending-changes-modal/pending-changes-modal.component';
 
 @Component({
   selector: 'app-activity-details',
@@ -16,11 +14,11 @@ import { PendingChangesModal } from '../guards/pending-changes-modal/pending-cha
 export class ActivityDetailsComponent implements OnInit {
 
   @Input() activity: IActivity;
+  @Output() onDelete = new EventEmitter()
 
   constructor(
     private modalService: NgbModal,
-    private activitiesApi: ActivitiesApiService,
-    private router: Router) { }
+    private activitiesApi: ActivitiesApiService) { }
 
   ngOnInit() {
     switch (this.activity.category) {
@@ -35,9 +33,8 @@ export class ActivityDetailsComponent implements OnInit {
     modal.componentInstance.activity = activity;
 
     modal.result.then(() => {
-      this.activitiesApi.deleteActivity(activity.id).subscribe(result => {
-        this.router.navigate(['activities']);
-      });
+      this.activitiesApi.deleteActivity(activity.id);
+      this.onDelete.emit();
     })
   }
 

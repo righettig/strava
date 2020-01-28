@@ -1,5 +1,13 @@
 Known issues & todo
 -------------------
+- re-usable library
+	charts
+	logging service (AppInsights or Angulartics)
+	notification service
+	grid
+
+- httpInterceptor (inject tokens)
+
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
 
@@ -12,9 +20,6 @@ Known issues & todo
 		devo controllare anche per la virtualizzazione
 
 shoes are not persisted, use the inmemorywebapi	
-	
-delete with confirmation dialog
-	there is a bug!
 	
 PendingChangesModal no longer displays
 	
