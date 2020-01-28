@@ -1,11 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivitiesApiService } from '../services/activities-api.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './activity-new.component.html',
-  styleUrls: ['./activity-new.component.scss']
+  styleUrls: ['./activity-new.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityNewComponent {
 

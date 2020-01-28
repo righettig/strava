@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faRunning, faHiking, faBicycle, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { ActivitiesApiService } from '../services/activities-api.service';
+import { PendingChangesModal } from '../guards/pending-changes-modal/pending-changes-modal.component';
 
 @Component({
   selector: 'app-activity-details',
   templateUrl: './activity-details.component.html',
-  styleUrls: ['./activity-details.component.scss']
+  styleUrls: ['./activity-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityDetailsComponent implements OnInit {
 

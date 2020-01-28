@@ -6,7 +6,7 @@ Known issues & todo
 	Loader for Races
 
 - another premium feature
-	guard that redirects to a page to upgrade subcrptions
+	guard that redirects to a page to upgrade subscriptions
 	when OK, redirect to the page we clicked before AFTER AuthService.premium is updated
 
 - docker
@@ -17,6 +17,8 @@ shoes are not persisted, use the inmemorywebapi
 	
 delete with confirmation dialog
 	there is a bug!
+	
+PendingChangesModal no longer displays
 	
 optional
 	update dependencies

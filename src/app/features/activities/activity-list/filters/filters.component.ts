@@ -1,17 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent {
 
   @Input() filterBy: string;
   @Output() onFilter: EventEmitter<string> = new EventEmitter<string>();
-
-  ngOnInit() {
-  }
 
   doFilter(category) {
     this.onFilter.emit(category);
