@@ -17,7 +17,7 @@
       </ng-container>
       
       <!-- TODO: you should only be allowed to give at most one like per-activity -->
-      <button *ngIf="activity.username != currentUsername" type="button" class="btn btn-default" (click)="giveKudos(activity)">
+      <button [disabled]="activity.username == currentUsername" type="button" class="btn btn-default" (click)="giveKudos(activity)">
         <fa-icon [icon]="faThumbsUp"></fa-icon>
         <span *ngIf="activity.kudos"> {{ activity.kudos }}</span>
       </button>

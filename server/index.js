@@ -2,9 +2,9 @@
 // Import Node Modules
 // -------------------------------
 require("dotenv").config();
-const cors = require("cors");
-const Pusher = require("pusher");
-const express = require("express");
+const cors       = require("cors");
+const Pusher     = require("pusher");
+const express    = require("express");
 const bodyParser = require("body-parser");
 
 // ------------------------------
@@ -31,6 +31,9 @@ const pusher = new Pusher({
 // Create app routes
 // -------------------------------
 app.post("/update", function (req, res) {
+  console.log("update");
+  console.log(req.body);
+
   // -------------------------------
   // Trigger pusher event
   // ------------------------------
@@ -38,6 +41,21 @@ app.post("/update", function (req, res) {
     activityId: `${req.body.activityId}`,
     kudos: `${req.body.kudos}`
   });
+});
+
+app.post("/activity-new", function (req, res) {
+  console.log("activity-new");
+  console.log(req.body);
+
+  pusher.trigger("events-channel", "new-activity", {
+  });
+});
+
+app.get("/foo", function (req, res) {
+  console.log("foo");
+  console.log(req.body);
+
+  res.send('hello world');
 });
 
 app.listen("3120");

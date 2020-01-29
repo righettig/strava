@@ -18,6 +18,10 @@ interface IKudosReply {
   kudos: string;
 }
 
+interface IActivityReply {
+  activity: IActivity
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +37,7 @@ export class ActivitiesApiService {
   activities: IActivity[]; // in-memory cache
 
   giveKudos(activity: IActivity) {
-    activity.kudos++;   
+    activity.kudos++;
 
     this.http.post('http://localhost:3120/update', 
       {
@@ -90,6 +94,11 @@ export class ActivitiesApiService {
   }
 
   insertActivity(activity: IActivity): Observable<number> {
+    this.http.post('http://localhost:3120/activity-new', 
+    {
+      activity: activity
+    });
+
     activity.id = this.activities.length + 1;
     activity.creationDate = new Date();
     activity.username = this.auth.currentUsername;
@@ -153,6 +162,10 @@ export class ActivitiesApiService {
     
     channel.bind('new-like', (data: IKudosReply) => {     
       this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
+    });
+
+    channel.bind('new-activity', (data: IActivity) => {     
+      this.activities.push(data);
     });
   }
 
