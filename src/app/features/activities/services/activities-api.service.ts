@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, Subject } from 'rxjs';
 import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
@@ -32,10 +32,16 @@ export class ActivitiesApiService {
     private http: HttpClient, 
     private cloner: ClonerService) { 
       this.initPusher();
-  }
 
-  activities: IActivity[]; // in-memory cache
+      this.activitiesSub = new Subject<IActivity[]>();
+      this.activities$ = this.activitiesSub.asObservable();
+    }
 
+  activities$: Observable<IActivity[]>
+  
+  private activitiesSub: Subject<IActivity[]>;  
+  private activities: IActivity[]; // in-memory cache
+  
   giveKudos(activity: IActivity) {
     activity.kudos++;
 
@@ -94,11 +100,6 @@ export class ActivitiesApiService {
   }
 
   insertActivity(activity: IActivity): Observable<number> {
-    this.http.post('http://localhost:3120/activity-new', 
-    {
-      activity: activity
-    });
-
     activity.id = this.activities.length + 1;
     activity.creationDate = new Date();
     activity.username = this.auth.currentUsername;
@@ -110,7 +111,10 @@ export class ActivitiesApiService {
       case "hike": activity.icon = faHiking; break;
     }
 
-    this.activities.push(activity);
+    this.http.post('http://localhost:3120/activity-new', 
+    {
+      activity: activity
+    }).subscribe();
 
     return of(activity.id);
   }
@@ -122,6 +126,7 @@ export class ActivitiesApiService {
       if (index > -1) {
         this.activities.splice(index, 1);
         this.activities.push(this.cloner.deepClone<IActivity>(activity));
+        
         return of(true);
 
       } else {
@@ -160,12 +165,16 @@ export class ActivitiesApiService {
 
     const channel = pusher.subscribe('events-channel');
     
-    channel.bind('new-like', (data: IKudosReply) => {     
+    channel.bind('new-like', (data: IKudosReply) => { 
       this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
+
+      this.activitiesSub.next(this.activities);
     });
 
-    channel.bind('new-activity', (data: IActivity) => {     
-      this.activities.push(data);
+    channel.bind('new-activity', (data: IActivityReply) => {     
+      this.activities.push(data.activity);
+
+      this.activitiesSub.next(this.activities);
     });
   }
 

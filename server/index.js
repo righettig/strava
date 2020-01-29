@@ -50,7 +50,10 @@ app.post("/activity-new", function (req, res) {
   console.log(req.body);
 
   pusher.trigger("events-channel", "new-activity", {
+    activity: req.body.activity
   });
+
+  res.end();
 });
 
 app.get("/foo", function (req, res) {
