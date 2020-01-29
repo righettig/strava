@@ -1,22 +1,29 @@
 <div class="card">
   <div class="card-header">
+    {{activity.username}}
     <fa-icon [icon]="activity.icon"></fa-icon>
     {{activity.name}}
     <small>{{activity.creationDate | date:'medium'}}</small>
     {{activity.distance}} km   
 
     <div class="btn-group btn-group-sm float-right" role="group">
-      <button type="button" class="btn btn-secondary" (click)="edit(activity)">Edit</button>
+      <ng-container *ngIf="activity.username == currentUsername">
+        <button type="button" class="btn btn-secondary" (click)="edit(activity)">
+          Edit
+        </button>
+        <button type="button" class="btn btn-danger" (click)="delete(activity)">
+          Delete
+        </button>
+      </ng-container>
       
-      <button type="button" class="btn btn-danger" (click)="delete(activity)">Delete</button>
-
       <!-- TODO: you should only be allowed to give at most one like per-activity -->
-      <button type="button" class="btn btn-default" (click)="giveKudos(activity)">
+      <button *ngIf="activity.username != currentUsername" type="button" class="btn btn-default" (click)="giveKudos(activity)">
         <fa-icon [icon]="faThumbsUp"></fa-icon>
         <span *ngIf="activity.kudos"> {{ activity.kudos }}</span>
       </button>
     </div>
   </div>
+
   <div class="card-body">
     {{activity.description}}
   </div>

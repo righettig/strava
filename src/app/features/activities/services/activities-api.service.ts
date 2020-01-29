@@ -6,6 +6,7 @@ import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { ClonerService } from 'strava-shared';
+import { AuthService } from '../../auth/auth.service';
 
 declare const Pusher: any;
 
@@ -23,6 +24,7 @@ interface IKudosReply {
 export class ActivitiesApiService {
 
   constructor(
+    private auth: AuthService,
     private http: HttpClient, 
     private cloner: ClonerService) { 
       this.initPusher();
@@ -90,6 +92,7 @@ export class ActivitiesApiService {
   insertActivity(activity: IActivity): Observable<number> {
     activity.id = this.activities.length;
     activity.creationDate = new Date();
+    activity.username = this.auth.currentUsername;
     activity.kudos = 0;
 
     switch (activity.category) {

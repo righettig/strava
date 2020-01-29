@@ -4,6 +4,7 @@ export interface IActivity {
   id: number;
   name: string;
   description: string;
+  username: string;
   creationDate: Date;
   distance: number;
   category: string;

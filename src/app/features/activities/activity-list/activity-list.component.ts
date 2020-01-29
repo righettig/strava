@@ -4,6 +4,7 @@ import { ActivitiesParamsService } from '../services/activities-params.service';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 import { ActivitiesFilterService } from '../services/activities-filter.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   templateUrl: './activity-list.component.html',

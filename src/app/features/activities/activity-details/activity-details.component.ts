@@ -5,6 +5,7 @@ import { IActivity } from '../models/activity';
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { ActivitiesApiService } from '../services/activities-api.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-activity-details',
@@ -18,11 +19,14 @@ export class ActivityDetailsComponent implements OnInit {
   @Output() onDelete = new EventEmitter()
 
   constructor(
+    private auth: AuthService,
     private router: Router,
     private modalService: NgbModal,
     private activitiesApi: ActivitiesApiService) { }
 
   ngOnInit() {
+    this.currentUsername = this.auth.currentUsername;
+
     switch (this.activity.category) {
       case "run":  this.activity.icon = faRunning; break;
       case "ride": this.activity.icon = faBicycle; break;
@@ -47,6 +51,8 @@ export class ActivityDetailsComponent implements OnInit {
   giveKudos(activity) {
     this.activitiesApi.giveKudos(activity);
   }
+
+  currentUsername: string;
 
   faThumbsUp = faThumbsUp;
 

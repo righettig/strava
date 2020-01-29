@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Longrun #1",
     "description": "20M longrun",
+    "username": "giacomo",
     "creationDate": "2020-01-28",
     "category": "run",
     "subcategory": "longrun",
@@ -13,6 +14,7 @@
     "id": 2,
     "name": "Interval training session #1",
     "description": "4 x 1M threshold intervals, 90 sec rest",
+    "username": "giacomo",
     "creationDate": "2020-01-27",
     "category": "run",
     "subcategory": "workout",
@@ -22,6 +24,7 @@
   {
     "id": 3,
     "name": "Mount Blanc Hike",
+    "username": "giacomo",
     "description": "Wonderful day out on the trails of Chamonix",
     "creationDate": "2019-12-21",
     "category": "hike",

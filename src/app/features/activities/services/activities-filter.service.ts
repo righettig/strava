@@ -8,11 +8,14 @@ import mapValues from 'lodash/mapValues';
 import sumBy     from 'lodash/sumBy';
 
 import * as moment from 'moment';
+import { AuthService } from '../../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivitiesFilterService {
+
+  constructor(private auth: AuthService) { } 
 
   filterByCategory(data: IActivity[], category: string) {
     let result = data; // all
@@ -28,7 +31,8 @@ export class ActivitiesFilterService {
     const now = new Date().getTime();
 
     const currentWeekActivities = data.filter(el => {
-      return ((now - el.creationDate.getTime()) / (1000 * 3600 * 24)) <= 7;
+      return el.username == this.auth.currentUsername && 
+        ((now - el.creationDate.getTime()) / (1000 * 3600 * 24)) <= 7;
     })
 
     return currentWeekActivities.reduce((curr, el) => curr + el.distance, 0);
@@ -36,13 +40,15 @@ export class ActivitiesFilterService {
 
   totalDistanceByWeeks(data: IActivity[]) {
     const tmp = 
-      data.map(el => {
-        const creationDate = moment(el.creationDate);
-        return {
-          creationDate,
-          from_to_date: creationDate.startOf('week').format('DD/MM/YYYY') + "-" + creationDate.endOf('week').format('DD/MM/YYYY'),
-          distance: el.distance
-        }})
+      data
+        .filter(el => el.username == this.auth.currentUsername)
+        .map(el => {
+          const creationDate = moment(el.creationDate);
+          return {
+            creationDate,
+            from_to_date: creationDate.startOf('week').format('DD/MM/YYYY') + "-" + creationDate.endOf('week').format('DD/MM/YYYY'),
+            distance: el.distance
+          }})
 
     const sortedData = 
       sortBy(tmp, el => el.creationDate);
