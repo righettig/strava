@@ -37,9 +37,9 @@ export class ActivitiesApiService {
       this.activities$ = this.activitiesSub.asObservable();
     }
 
-  activities$: Observable<IActivity[]>
-  
-  private activitiesSub: Subject<IActivity[]>;  
+  private activities$: Observable<IActivity[]>
+  private activitiesSub: Subject<IActivity[]>;
+
   private activities: IActivity[]; // in-memory cache
   
   giveKudos(activity: IActivity) {
@@ -54,17 +54,24 @@ export class ActivitiesApiService {
 
   getActivities(): Observable<IActivity[]> {
     if (this.activities) {
-      return of(this.cloner.deepClone<IActivity[]>(this.activities));
+      this.activitiesSub.next(
+        this.cloner.deepClone<IActivity[]>(this.activities));
 
     } else {
-      return this.http.get<IActivity[]>(localUrl).pipe(
+      let obs = this.http.get<IActivity[]>(localUrl).pipe(
         tap(data => data.forEach(el => el.creationDate = new Date(el.creationDate))),
         tap(data => this.activities = this.cloner.deepClone<IActivity[]>(data)),
         tap(data => console.log("getActivities: " + JSON.stringify(data))),
         timeout(TIMEOUT),
         catchError(this.handleError)
       );
+
+      obs.subscribe(res => {
+        this.activitiesSub.next(res);
+      })
     }
+
+    return this.activities$;
   }
 
   getActivity(activityId: number): Observable<IActivity> {
@@ -176,6 +183,9 @@ export class ActivitiesApiService {
 
       this.activitiesSub.next(this.activities);
     });
+
+    // TODO: amend
+    // TODO: delete
   }
 
 }

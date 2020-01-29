@@ -20,14 +20,6 @@ export class ActivityListComponent implements OnInit {
 
   ngOnInit() {
     this.getActivities();
-
-    this.activitiesApi.activities$.subscribe(data => {
-      // TODO: refactor
-      this.activities = data;
-      this.filterActivities();
-      this.currentWeekTotalDistance = 
-        this.activitiesFilter.currentWeekTotalDistance(this.activities);
-    })
   }
 
   set filterBy(value: string) {
@@ -42,6 +34,7 @@ export class ActivityListComponent implements OnInit {
     this.activitiesApi.getActivities()
       .subscribe({
         next: data => {
+          debugger;
           this.activities = data;
           this.filterActivities();
           this.currentWeekTotalDistance = 
