@@ -41,6 +41,8 @@ app.post("/update", function (req, res) {
     activityId: `${req.body.activityId}`,
     kudos: `${req.body.kudos}`
   });
+
+  res.end();
 });
 
 app.post("/activity-new", function (req, res) {

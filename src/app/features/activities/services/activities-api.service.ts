@@ -43,7 +43,7 @@ export class ActivitiesApiService {
       {
         activityId: activity.id, 
         kudos: activity.kudos 
-      });
+      }).subscribe();
   }
 
   getActivities(): Observable<IActivity[]> {
