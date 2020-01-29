@@ -18,9 +18,6 @@ TODO
 
 Known issues
 ============
-it should not be possible to modify other user's activities
-	http://localhost:4200/#/activities/1
-
 activities/new SAVE btn is enabled even though form.name is empty
 
 shoes are not persisted, use the inmemorywebapi	

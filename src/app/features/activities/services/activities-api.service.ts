@@ -90,7 +90,7 @@ export class ActivitiesApiService {
   }
 
   insertActivity(activity: IActivity): Observable<number> {
-    activity.id = this.activities.length;
+    activity.id = this.activities.length + 1;
     activity.creationDate = new Date();
     activity.username = this.auth.currentUsername;
     activity.kudos = 0;
