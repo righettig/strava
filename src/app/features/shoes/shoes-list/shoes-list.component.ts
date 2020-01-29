@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
-import { filter, groupBy, debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   templateUrl: './shoes-list.component.html',
