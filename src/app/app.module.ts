@@ -7,6 +7,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { PageNotFoundComponent } from './routing/page-not-found/page-not-found.component';
 import { AppComponent } from './root/app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AppComponent } from './root/app.component';
     PageNotFoundComponent
   ],
   imports: [
+    BrowserAnimationsModule, // necessary for ngx-charts to work fine
     BrowserModule,
     HttpClientModule,
     SharedModule,

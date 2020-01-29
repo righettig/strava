@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IActivity } from '../models/activity';
 
+import groupBy   from 'lodash/groupBy';
+import sortBy    from 'lodash/sortBy';
+import map       from 'lodash/map';
+import mapValues from 'lodash/mapValues';
+import sumBy     from 'lodash/sumBy';
+
+import * as moment from 'moment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +32,37 @@ export class ActivitiesFilterService {
     })
 
     return currentWeekActivities.reduce((curr, el) => curr + el.distance, 0);
+  }
+
+  totalDistanceByWeeks(data: IActivity[]) {
+    const tmp = 
+      data.map(el => {
+        const creationDate = moment(el.creationDate);
+        return {
+          creationDate,
+          from_to_date: creationDate.startOf('week').format('DD/MM/YYYY') + "-" + creationDate.endOf('week').format('DD/MM/YYYY'),
+          distance: el.distance
+        }})
+
+    const sortedData = 
+      sortBy(tmp, el => el.creationDate);
+
+    const groupedData = 
+      groupBy(sortedData, el => el.from_to_date);
+
+    let result = 
+      mapValues(
+        groupedData, 
+        g => sumBy(g, el => el.distance))
+
+    result = map(result, (totalDistance, week) => {
+      return {
+        name: week,
+        value: totalDistance
+      }
+    })
+
+    return result;
   }
 
 }

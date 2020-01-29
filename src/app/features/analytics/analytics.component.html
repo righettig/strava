@@ -1,5 +1,23 @@
-<p>analytics works!</p>
+<!-- <lib-strava-shared></lib-strava-shared> -->
 
-<lib-strava-shared></lib-strava-shared>
-
-<app-default-page-link></app-default-page-link>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ngx-charts-bar-vertical 
+        [view]="view"
+        [results]="chartData" 
+        [gradient]="gradient" 
+        [xAxis]="showXAxis" 
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel" 
+        [showYAxisLabel]="showYAxisLabel" 
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" 
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+  <div class="row">
+    <app-default-page-link></app-default-page-link>
+  </div>
+</div>
