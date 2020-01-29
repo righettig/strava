@@ -38,6 +38,8 @@ app.post("/update", function (req, res) {
     activityId: `${req.body.activityId}`,
     kudos: `${req.body.kudos}`
   });
+
+  res.end();
 });
 
 app.listen("3120");
