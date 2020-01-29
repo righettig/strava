@@ -1,12 +1,9 @@
-Known issues & todo
--------------------
+TODO
+====
 - re-usable library
-	charts
 	logging service (AppInsights or Angulartics)
 	notification service
 	grid
-
-- httpInterceptor (inject tokens)
 
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
@@ -19,6 +16,8 @@ Known issues & todo
 	devo verificare di poter eseguire docker (non ho windows 10 pro)
 		devo controllare anche per la virtualizzazione
 
+Known issues
+============
 activities/new SAVE btn is enabled even though form.name is empty
 
 shoes are not persisted, use the inmemorywebapi	
