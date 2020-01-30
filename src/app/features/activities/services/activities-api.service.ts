@@ -178,7 +178,8 @@ export class ActivitiesApiService {
       this.activitiesSub.next(this.activities);
     });
 
-    channel.bind('new-activity', (data: IActivityReply) => {     
+    channel.bind('new-activity', (data: IActivityReply) => {
+      data.activity.creationDate = new Date(data.activity.creationDate);     
       this.activities.push(data.activity);
 
       this.activitiesSub.next(this.activities);

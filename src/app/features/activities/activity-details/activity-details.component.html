@@ -28,8 +28,8 @@
     <div class="pb-2">
       {{activity.description}}
     </div>
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-map [latitude]="activity.location.lat" [longitude]="activity.location.lng">
+      <agm-marker [latitude]="activity.location.lat" [longitude]="activity.location.lng"></agm-marker>
     </agm-map>
   </div>
 </div>

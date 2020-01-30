@@ -9,6 +9,10 @@ export interface IActivity {
   distance: number;
   category: string;
   subcategory: string;
+  location: {
+    lat: number; // = 40.730610;
+    lng: number; // -73.935242;
+  }
   icon: IconDefinition;
   kudos: number;
 }

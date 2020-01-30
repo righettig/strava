@@ -18,9 +18,6 @@ export class ActivityDetailsComponent implements OnInit {
   @Input() activity: IActivity;
   @Output() onDelete = new EventEmitter()
 
-  lat = 40.730610;
-  lng = -73.935242;
-
   constructor(
     private auth: AuthService,
     private router: Router,

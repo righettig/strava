@@ -35,5 +35,9 @@ export class ActivityNewComponent {
   category: string;
   subcategory: string;
   distance: number;
+  location = {
+    lat: 0,
+    lng: 0 
+  }
 
 }

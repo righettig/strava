@@ -59,6 +59,28 @@
            [(ngModel)]="activity.distance">
   </div>
 
+  <div class="form-group" ngModelGroup="location">
+    <label>Location</label>
+    <div class="form-row">
+      <div class="col">
+        <input type="number" 
+           id="lat" 
+           name="lat"
+           class="form-control"
+           placeholder="Latitude"
+           [(ngModel)]="activity.location.lat">
+      </div>
+      <div class="col">
+        <input type="number" 
+           id="lng" 
+           name="lng"
+           class="form-control"
+           placeholder="Longitude"
+           [(ngModel)]="activity.location.lng">
+      </div>
+    </div>    
+  </div>
+
   <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
     Save
   </button>
