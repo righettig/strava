@@ -10,6 +10,7 @@ import { ActivityNewComponent } from './activity-new/activity-new.component';
 import { UserStatsComponent } from './activity-list/user-stats/user-stats.component';
 import { ConfirmDeleteActivityModal } from './activity-details/confirm-delete-activity-modal/confirm-delete-activity-modal.component';
 import { PendingChangesModal } from './guards/pending-changes-modal/pending-changes-modal.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,9 @@ import { PendingChangesModal } from './guards/pending-changes-modal/pending-chan
     PendingChangesModal
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyDyIPVyF6ouUuH6qXKDVoRQ0y0MatoImRE"
+    }),
     SharedModule,
     ActivityRoutingModule,
   ],

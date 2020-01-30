@@ -5,12 +5,29 @@ TODO
 	notification service
 	grid
 
+- google maps => location when entering a new activity
+
+- google analytics, https://medium.com/@PurpleGreenLemon/how-to-properly-add-google-analytics-tracking-to-your-angular-web-app-bc7750713c9e
+
 - define loader in app.component or see if I can re-use an 3rd-party plug-in.
 	Loader for Races
 
 - another premium feature
 	guard that redirects to a page to upgrade subscriptions
 	when OK, redirect to the page we clicked before AFTER AuthService.premium is updated
+
+	personal log
+		score fitness, motivation, happiness morning and at the end of the day?
+		workout score? 1-10 then we can plot this data on a chart along with 
+			daily track food intake, etc. 
+
+	- ngrx-data with tooling (http://extension.remotedev.io/)
+	
+	- how to unsubscribe
+		@AutoUnsubscribe decorator (https://www.npmjs.com/package/ngx-auto-unsubscribe)
+		subsink (there are others..)
+
+- pipe with @memo decorator
 
 - docker
 	devo verificare di poter eseguire docker (non ho windows 10 pro)

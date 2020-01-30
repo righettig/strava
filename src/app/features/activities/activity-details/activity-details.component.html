@@ -24,7 +24,12 @@
     </div>
   </div>
 
-  <div class="card-body">
-    {{activity.description}}
+  <div class="card-body px-3 pt-2 pb-3">
+    <div class="pb-2">
+      {{activity.description}}
+    </div>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
   </div>
 </div>
