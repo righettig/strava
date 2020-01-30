@@ -8,8 +8,8 @@
     "category": "run",
     "subcategory": "longrun",
     "location": {
-      "lat": 40.730610,
-      "lng": -73.935242
+      "lat": 44.3653,
+      "lng": 10.0922
     },
     "distance": 20,
     "kudos": 2
@@ -23,8 +23,8 @@
     "category": "run",
     "subcategory": "workout",
     "location": {
-      "lat": 40.730610,
-      "lng": -73.935242
+      "lat": 51.5387,
+      "lng": 0.0166
     },
     "distance": 4,
     "kudos": 11
@@ -37,8 +37,8 @@
     "creationDate": "2019-12-21",
     "category": "hike",
     "location": {
-      "lat": 40.730610,
-      "lng": -73.935242
+      "lat": 45.9237,
+      "lng": 6.8694
     },
     "distance": 30,
     "kudos": 0
