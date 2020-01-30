@@ -21,6 +21,29 @@
   </div>
   
   <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <label for="category">Category</label>
+        <input type="text" 
+               id="category" 
+               name="category" 
+               class="form-control"
+               placeholder="Category"
+               [(ngModel)]="category">
+      </div>
+      <div class="col">
+        <label for="category">Subcategory</label>
+        <input type="text" 
+               id="subcategory" 
+               name="subcategory"
+               class="form-control"
+               placeholder="Subcategory"
+               [(ngModel)]="subcategory">    
+      </div>
+    </div>    
+  </div>
+
+  <div class="form-group">
     <label for="description">Description</label>
     <input type="text"
            id="description" 
@@ -30,39 +53,18 @@
            [(ngModel)]="description">
   </div>
   
-  <div class="form-group">
-    <label for="category">Category</label>
-    <input type="text" 
-           id="category" 
-           name="category" 
-           class="form-control"
-           placeholder="Category"
-           [(ngModel)]="category">
-  </div>
-  
-  <div class="form-group">
-    <label for="subcategory">Subcategory</label>
-    <input type="text" 
-           id="subcategory" 
-           name="subcategory"
-           class="form-control"
-           placeholder="Subcategory"
-           [(ngModel)]="subcategory">
-  </div>
-  
-  <div class="form-group">
-    <label for="distance">Distance (km)</label>
-    <input type="number" 
-           id="distance" 
-           name="distance"
-           class="form-control"
-           [(ngModel)]="distance">
-  </div>
-
   <div class="form-group" ngModelGroup="location">
-    <label>Location</label>
     <div class="form-row">
       <div class="col">
+        <label for="distance">Distance (km)</label>
+        <input type="number" 
+               id="distance" 
+               name="distance"
+               class="form-control"
+               [(ngModel)]="distance">
+      </div>
+      <div class="col">
+        <label>Latitude</label>
         <input type="number" 
            id="lat" 
            name="lat"
@@ -71,6 +73,7 @@
            [(ngModel)]="location.lat">
       </div>
       <div class="col">
+        <label>Longitude</label>
         <input type="number" 
            id="lng" 
            name="lng"
