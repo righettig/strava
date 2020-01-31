@@ -13,6 +13,9 @@
         <a class="nav-link" routerLink="/shoes" routerLinkActive="active">Shoes</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" routerLink="/training-log" routerLinkActive="active">Training Log</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/races" routerLinkActive="active" 
            title="{{isPremium ? '' : 'Feature is only available for Premium users'}}"
            [ngClass]="{'disabled': !isPremium}">Races</a>

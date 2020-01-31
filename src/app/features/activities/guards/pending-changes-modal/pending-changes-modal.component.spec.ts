@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PendingChangesModal } from './pending-changes-modal.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('PendingChangesModalComponent', () => {
   let component: PendingChangesModal;
@@ -8,6 +9,7 @@ describe('PendingChangesModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [ NgbModal, NgbActiveModal ],
       declarations: [ PendingChangesModal ]
     })
     .compileComponents();

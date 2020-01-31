@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './routing/page-not-found/page-not-found.c
 import { AppComponent } from './root/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
+import { AppStoreModule } from './features/training-log/store/store.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    AuthModule,    
-    AppRoutingModule
+    AuthModule,  
+    AppStoreModule,  
+    AppRoutingModule, 
   ],
   bootstrap: [AppComponent]
 })

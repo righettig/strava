@@ -34,7 +34,6 @@ export class ActivityListComponent implements OnInit {
     this.activitiesApi.getActivities()
       .subscribe({
         next: data => {
-          debugger;
           this.activities = data;
           this.filterActivities();
           this.currentWeekTotalDistance = 

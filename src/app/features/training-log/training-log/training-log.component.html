@@ -1,0 +1,43 @@
+<ngx-loading-bar></ngx-loading-bar>
+
+<div class="container">
+  <h2 class="text-center">Your Training Log</h2>
+  
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <app-training-log-edit (onSave)="add($event)"></app-training-log-edit>
+    </div>
+  </div>
+
+  <hr>
+
+  <div *ngIf="trainingLogs$ | async as logs">
+    <ng-container *ngFor="let log of logs">
+      <div class="card">
+        <div class="card-header">        
+          <span class="align-middle" style="margin-right: 40px;">{{log.date | date: "short"}}</span>
+
+          <span class="align-middle" style="margin-right: 8px;">
+            Motivation {{log.motivation_score}}
+          </span>
+          <span class="align-middle">
+            Fitness {{log.fitness_score}}
+          </span>
+
+          <div class="btn-group btn-group-sm float-right" role="group">
+            <button type="button" class="btn btn-secondary" [routerLink]="['edit', log.id]">
+              Edit
+            </button>
+            <button type="button" class="btn btn-danger" (click)="delete(log)">
+              Delete
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          {{log.entry}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>

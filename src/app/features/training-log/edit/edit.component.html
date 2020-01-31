@@ -1,0 +1,65 @@
+<!-- Template-driven form -->
+<form #f="ngForm" *ngIf="trainingLog" (ngSubmit)="save()" novalidate>
+   
+  <div class="form-group">
+    <label for="date">Date</label>
+    <div class="form-group">
+      <div class="input-group">
+        <input class="form-control form-control-sm" 
+               placeholder="yyyy-mm-dd"
+               id="date" 
+               name="date" 
+               [(ngModel)]="trainingLog.date" 
+               ngbDatepicker #d="ngbDatepicker" required>
+        <div class="input-group-append">
+          <button class="btn btn-sm btn-outline-secondary" (click)="d.toggle()" type="button">
+            <fa-icon [icon]="faCalendarDay"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <label for="fitness_score">Fitness Score</label>
+        <input type="number" 
+               id="fitness_score" 
+               name="fitness_score"
+               class="form-control form-control-sm"
+               placeholder="Fitness Score"
+               [(ngModel)]="trainingLog.fitness_score">
+      </div>
+      <div class="col">
+        <label for="motivation_score">Motivation Score</label>
+        <input type="number" 
+               id="motivation_score" 
+               name="motivation_score"
+               class="form-control form-control-sm"
+               placeholder="Motivation Score"
+               [(ngModel)]="trainingLog.motivation_score">
+      </div>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <label for="entry">Entry</label>
+    <textarea type="text"
+              id="entry" 
+              name="entry" 
+              class="form-control form-control-sm"
+              placeholder="Entry"
+              [(ngModel)]="trainingLog.entry">
+    </textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" [disabled]="f.pristine" (click)="reset()">
+    Discard
+  </button>
+
+</form>

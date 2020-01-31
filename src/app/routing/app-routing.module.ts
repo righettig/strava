@@ -21,6 +21,7 @@ const routes: Routes = [
       { path: '', loadChildren: () => import('../features/analytics/analytics.module').then(m => m.AnalyticsModule) },
       { path: '', loadChildren: () => import('../features/profile/profile.module').then(m => m.ProfileModule) },
       { path: '', loadChildren: () => import('../features/shoes/shoes.module').then(m => m.ShoesModule) },
+      { path: '', loadChildren: () => import('../features/training-log/training-log.module').then(m => m.TrainingLogModule) },
       { 
         path: '', 
         canLoad: [PremiumUserGuard],
