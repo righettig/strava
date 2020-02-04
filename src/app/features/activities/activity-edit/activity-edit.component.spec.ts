@@ -65,7 +65,7 @@ describe('ActivityEditComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    fit('save should invoke "editActivity" and redirect to the activities page', () => {
+    it('save should invoke "editActivity" and redirect to the activities page', () => {
       activitiesApiMock.editActivity.and.returnValue(
         of({}) // we do not care about the returned value
       )
