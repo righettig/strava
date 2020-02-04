@@ -23,12 +23,14 @@ export class PusherService {
     
     if (!channel) {
       channel = this._pusher.subscribe(channelName);
+      
+      this.channels.set(channelName, channel);
     }
 
     channel.bind(eventName, fn);
   }
 
-  private channels: [ { key: string, channel: any} ];
+  private channels: Map<string, any> = new Map();
   
   private _pusher;
 
