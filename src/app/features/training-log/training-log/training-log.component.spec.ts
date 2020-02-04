@@ -4,6 +4,11 @@ import { TrainingLogComponent } from './training-log.component';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AppStoreModule } from '../store/store.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TrainingLogEditComponent } from '../edit/edit.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('TrainingLogComponent', () => {
   let component: TrainingLogComponent;
@@ -11,8 +16,14 @@ describe('TrainingLogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [LoadingBarModule, AppStoreModule, HttpClientModule],
-      declarations: [ TrainingLogComponent ]
+      imports: [
+        SharedModule,
+        LoadingBarModule, 
+        AppStoreModule, 
+        HttpClientModule, 
+        RouterTestingModule
+      ],
+      declarations: [ TrainingLogComponent, TrainingLogEditComponent ]
     })
     .compileComponents();
   }));
