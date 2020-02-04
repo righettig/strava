@@ -5,6 +5,7 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { IActivity } from '../models/activity';
 import { ActivitiesFilterService } from '../services/activities-filter.service';
 import { AuthService } from '../../auth/auth.service';
+import { SubSink } from 'subsink';
 
 @Component({
   templateUrl: './activity-list.component.html',
@@ -22,6 +23,10 @@ export class ActivityListComponent implements OnInit {
     this.getActivities();
   }
 
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
+
   set filterBy(value: string) {
     this.params.filterBy = value;
   }
@@ -31,7 +36,7 @@ export class ActivityListComponent implements OnInit {
   }
 
   getActivities() {
-    this.activitiesApi.getActivities()
+    this.subs.sink = this.activitiesApi.getActivities()
       .subscribe({
         next: data => {
           this.activities = data;
@@ -65,5 +70,7 @@ export class ActivityListComponent implements OnInit {
 
   activities: IActivity[];
   filteredActivities: IActivity[];
+
+  private subs = new SubSink();
 
 }
