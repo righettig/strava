@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of, Subject } from 'rxjs';
+import { Observable, throwError, of, BehaviorSubject } from 'rxjs';
 import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
@@ -47,12 +47,12 @@ export class ActivitiesApiService {
       // TODO: amend
       // TODO: delete
 
-      this.activitiesSub = new Subject<IActivity[]>();
+      this.activitiesSub = new BehaviorSubject<IActivity[]>([]);
       this.activities$ = this.activitiesSub.asObservable();
     }
 
   private activities$: Observable<IActivity[]>
-  private activitiesSub: Subject<IActivity[]>;
+  private activitiesSub: BehaviorSubject<IActivity[]>;
 
   private activities: IActivity[]; // in-memory cache
   
