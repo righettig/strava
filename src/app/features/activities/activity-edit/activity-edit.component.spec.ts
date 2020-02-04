@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { ActivitiesApiService } from '../services/activities-api.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../../auth/auth.service';
 
 describe('ActivityEditComponent', () => {
   let component: ActivityEditComponent;
@@ -31,7 +32,7 @@ describe('ActivityEditComponent', () => {
         "kudos": 2
       })
     )
-
+  
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
@@ -40,6 +41,7 @@ describe('ActivityEditComponent', () => {
       ],
       declarations: [ActivityEditComponent],
       providers: [
+        { provide: AuthService, useValue: { currentUsername: 'giacomo' } },
         { provide: ActivitiesApiService, useValue: activitiesApiMock }
       ]
     })
