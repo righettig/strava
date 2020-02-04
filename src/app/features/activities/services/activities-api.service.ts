@@ -4,11 +4,9 @@ import { Observable, throwError, of, Subject } from 'rxjs';
 import { IActivity } from '../models/activity';
 import { catchError, tap, timeout, map } from 'rxjs/operators';
 import { faRunning, faBicycle, faHiking } from '@fortawesome/free-solid-svg-icons';
-import { environment } from 'src/environments/environment';
 import { ClonerService } from 'strava-shared';
 import { AuthService } from '../../auth/auth.service';
-
-declare const Pusher: any;
+import { PusherService } from 'src/app/core/pusher.service';
 
 const localUrl = 'api/activities.json';
 const TIMEOUT = 5000;
@@ -28,10 +26,26 @@ interface IActivityReply {
 export class ActivitiesApiService {
 
   constructor(
+    private pusher: PusherService,
     private auth: AuthService,
     private http: HttpClient, 
     private cloner: ClonerService) { 
-      this.initPusher();
+      
+      this.pusher.bind('events-channel', 'new-like', (data: IKudosReply) => { 
+        this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
+  
+        this.activitiesSub.next(this.activities);
+      });
+  
+      this.pusher.bind('events-channel', 'new-activity', (data: IActivityReply) => {
+        data.activity.creationDate = new Date(data.activity.creationDate);     
+        this.activities.push(data.activity);
+  
+        this.activitiesSub.next(this.activities);
+      });
+  
+      // TODO: amend
+      // TODO: delete
 
       this.activitiesSub = new Subject<IActivity[]>();
       this.activities$ = this.activitiesSub.asObservable();
@@ -159,34 +173,6 @@ export class ActivitiesApiService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-  }
-
-  private initPusher() {
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    const pusher = new Pusher(environment.pusher.key, {
-      cluster: environment.pusher.cluster,
-      forceTLS: true
-    });
-
-    const channel = pusher.subscribe('events-channel');
-    
-    channel.bind('new-like', (data: IKudosReply) => { 
-      this.activities.find(el => el.id == +data.activityId).kudos = +data.kudos;
-
-      this.activitiesSub.next(this.activities);
-    });
-
-    channel.bind('new-activity', (data: IActivityReply) => {
-      data.activity.creationDate = new Date(data.activity.creationDate);     
-      this.activities.push(data.activity);
-
-      this.activitiesSub.next(this.activities);
-    });
-
-    // TODO: amend
-    // TODO: delete
   }
 
 }
