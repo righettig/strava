@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivitiesApiService } from '../services/activities-api.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { TestHelpers } from 'src/test-helpers/dummy-data';
+import { TestHelpers } from 'src/testing/dummy-data';
 
 describe('ActivityDetailsComponent', () => {
   let component: ActivityDetailsComponent;

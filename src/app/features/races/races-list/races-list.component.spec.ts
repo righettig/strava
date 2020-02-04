@@ -4,7 +4,7 @@ import { RacesListComponent } from './races-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub } from 'src/app/testing/activated-route-stub';
+import { ActivatedRouteStub } from 'src/testing/activated-route-stub';
 
 describe('RacesListComponent', () => {
   let component: RacesListComponent;

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmDeleteActivityModal } from './confirm-delete-activity-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TestHelpers } from 'src/test-helpers/dummy-data';
+import { TestHelpers } from 'src/testing/dummy-data';
 
 describe('ConfirmDeleteActivityModalComponent', () => {
   let component: ConfirmDeleteActivityModal;
