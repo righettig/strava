@@ -51,4 +51,11 @@ describe('ActivityListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // display set of activities based on returned data
+
+  // display error message if service returns error
+
+  // apply filter: onFilter => filterActivities (integration test)
+
 });

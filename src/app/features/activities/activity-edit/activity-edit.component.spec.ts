@@ -57,4 +57,13 @@ describe('ActivityEditComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // trying to edit an actity that does not belong to the current user should redirect to 'activities'
+
+  // save
+
+  // reset
+
+  // dirty
+
 });

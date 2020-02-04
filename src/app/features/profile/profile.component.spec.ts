@@ -41,4 +41,9 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // display data based on profile
+
+  // save
+
 });

@@ -9,4 +9,9 @@ describe('ActivitiesFilterService', () => {
     const service: ActivitiesFilterService = TestBed.get(ActivitiesFilterService);
     expect(service).toBeTruthy();
   });
+
+  // filterByCategory
+  // currentWeekTotalDistance
+  // totalDistanceByWeeks
+
 });

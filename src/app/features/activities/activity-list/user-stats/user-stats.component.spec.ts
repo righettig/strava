@@ -24,4 +24,11 @@ describe('UserStatsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // totalDistance > 0  => totalDistance should be displayed in template
+
+  // totalDistance == 0 => no data
+
+  // goToFullAnalytics => redirect
+
 });

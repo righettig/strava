@@ -38,4 +38,9 @@ describe('RacesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // display an entry for each returned race
+
+  // search
+
 });

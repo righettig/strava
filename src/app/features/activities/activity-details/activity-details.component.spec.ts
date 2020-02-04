@@ -41,4 +41,13 @@ describe('ActivityDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // check template bindings after passing an activity
+
+  // delete: 
+
+  // edit: redirect to edit route
+
+  // give kudos
+
 });
