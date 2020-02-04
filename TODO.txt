@@ -4,7 +4,6 @@ create re-usable component for "Stars" => shared
 
 testing:
 	test coverage report
-	do some testing
 
 - re-usable library
 	logging service (AppInsights or Angulartics)
