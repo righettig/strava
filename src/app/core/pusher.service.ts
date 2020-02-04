@@ -10,7 +10,7 @@ export class PusherService {
 
   constructor() {
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    Pusher.logToConsole = !environment.production;
 
     this._pusher = new Pusher(environment.pusher.key, {
       cluster: environment.pusher.cluster,
