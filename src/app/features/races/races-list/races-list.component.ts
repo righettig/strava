@@ -11,7 +11,7 @@ import { IResolvedRaces } from '../models/race';
 })
 export class RacesListComponent implements OnInit {
 
-  @ViewChild(NgModel, { static: false } ) public query: NgModel;
+  @ViewChild(NgModel) public query: NgModel;
 
   constructor(
     private route: ActivatedRoute,

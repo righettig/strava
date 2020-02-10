@@ -29,6 +29,3 @@ activities/new SAVE btn is enabled even though form.name is empty
 shoes are not persisted, use the inmemorywebapi	
 	
 PendingChangesModal no longer displays
-	
-optional
-	update dependencies

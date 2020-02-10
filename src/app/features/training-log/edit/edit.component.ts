@@ -12,7 +12,7 @@ import { TrainingLogService } from '../services/training-log.service';
 })
 export class TrainingLogEditComponent {
 
-  @ViewChild(NgForm, { static: false } ) public formGroup: NgForm;
+  @ViewChild(NgForm) public formGroup: NgForm;
 
   @Output() onSave = new EventEmitter<TrainingLog>();
 

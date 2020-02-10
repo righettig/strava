@@ -11,7 +11,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class ActivityEditComponent implements OnInit {
 
-  @ViewChild(NgForm, { static: false } ) public formGroup: NgForm;
+  @ViewChild(NgForm) public formGroup: NgForm;
 
   constructor(
     private auth: AuthService,
