@@ -56,11 +56,6 @@ Save to db (Node / C#)
 
 agm to use google maps / path
 
-NB: re-use as much as possible code from pluralsight repo for speed-sake
-	cache service as seen in pluralsight video on component interaction
-
-==> create ppt presentation showing aspects of the project
-
 Additional features
 ===================
 2) Manage friends (add / remove friends)
